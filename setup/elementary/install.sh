@@ -68,6 +68,7 @@ done
 if [ ! -d ~/bin/quicktile ]; then
     info "Installing quicktile"
     curl -L https://api.github.com/repos/ssokolow/quicktile/tarball | tar xz --strip=1 -C ~/bin/quicktile
+    chmod +x ~/bin/quicktile
 fi
 
 if ! command -v bat &> /dev/null; then
@@ -96,3 +97,4 @@ yellow "== Post-install instructions =="
 yellow "1. Install VSCode https://phoenixnap.com/kb/install-vscode-ubuntu#ftoc-heading-3"
 yellow "2. Install docker https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository"
 yellow "3. Install jumpapp https://github.com/mkropat/jumpapp#ubuntu-debian-and-friends"
+yellow "4. Bring back tray indicators https://github.com/Lafydev/wingpanel-indicator-ayatana"

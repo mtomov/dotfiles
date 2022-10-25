@@ -6,6 +6,9 @@ curl
 dconf-editor
 ffmpeg
 fzf
+gir1.2-glib-2.0
+gir1.2-gtk-3.0
+gir1.2-wnck-3.0
 git-gui
 git-lfs
 gnome-system-monitor
@@ -22,6 +25,12 @@ libssl-dev
 libyaml-dev
 patch
 postgresql
+python3
+python3-dbus
+python3-gi
+python3-pip
+python3-setuptools
+python3-xlib
 rcm
 redis
 ripgrep
