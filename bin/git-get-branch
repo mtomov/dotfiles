@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# git-get-branch
+#
+# License: MIT
+# Copyright (c) 2012 Lennart C. L. Kats
+
+set -e
+
+RESULT=`git branch --no-color 2>/dev/null | grep '\* ' | grep --color=never -Eo '(\(|\w).*'`
+
+if [ "$RESULT" == "(no branch)" ] || [ "$RESULT" == "" ]; then
+  if  [ "$1" == "-p" ]; then
+    if [ "$RESULT" == "(no branch)" ]; then 
+      echo -n " * `git rev-parse HEAD | grep -oE '^.{7}'`"
+    fi
+  else
+    echo "Error: not on a branch" >&2
+    exit 1
+  fi
+else
+  if [ "$1" == "-p" ]; then
+    echo -n ' * '$RESULT
+  else
+    echo $RESULT
+  fi
+fi
+
+if [ "$1" == "-p" ] && [ "$2" != "--no-tag" ] && git describe --tag --exact-match &>/dev/null; then
+  echo -n ' @ '`git describe --tag --exact-match`
+fi

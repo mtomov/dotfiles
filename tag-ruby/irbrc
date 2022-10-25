@@ -1,0 +1,59 @@
+require "rubygems"
+require "pp"
+require "irb/completion"
+require "irb/ext/save-history"
+require "awesome_print"
+
+# require "irbtools"
+# require "irbtools/more"
+AwesomePrint.irb!
+
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "~/.irb_history"
+IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:ECHO_ON_ASSIGNMENT] = true
+
+def require_rb_files_from(dir)
+  Dir.glob(File.join(dir, "*.rb")) do |file|
+    require file
+  end
+end
+
+require_rb_files_from(File.join(ENV["HOME"], ".irbrc.d"))
+
+class Object
+  def own_methods
+    # (methods - Object.new.methods - Object.methods).sort
+    case self.class
+    when Class
+      public_methods.sort - Object.public_methods
+    when Module
+      public_methods.sort - Module.public_methods
+    else
+      public_methods.sort - Object.new.public_methods
+    end
+  end
+
+  alias interesting_methods own_methods
+end
+
+# Copy the return value of the passed-in block to the system clipboard
+# copy { "I am now in the system clipboard" }
+def copy
+  value = yield
+  IO.popen("pbcopy", "w") do |io|
+    io.write(value)
+  end
+  nil
+end
+
+# load .irbrc_rails in rails environments
+railsrc_path = File.expand_path("~/.irbrc_rails")
+if (ENV["RAILS_ENV"] || defined? Rails) && File.exist?(railsrc_path)
+  begin
+    load railsrc_path
+  rescue Exception
+    warn "Could not load: #{railsrc_path} because of #{$!.message}"
+  end
+end

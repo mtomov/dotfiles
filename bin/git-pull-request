@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+#
+# git-pull-request
+#
+# License: MIT
+# Copyright (c) 2012 Lennart C. L. Kats
+
+set -e
+
+OLD=
+NO_FETCH=
+
+if [ "$1" == "-o" ]; then
+  OLD=-o
+  NO_FETCH=-f
+  shift
+fi
+
+if [ "$1" == "-f" ]; then
+  NO_FETCH=-f
+  shift
+fi
+
+if [ "$1" == "-o" ]; then
+  OLD=-o
+  NO_FETCH=-f
+  shift
+fi
+
+if [ "$1" == "" ]; then
+  BRANCH=`git-get-branch`
+else
+  BRANCH="$1"
+fi
+
+# URL encode is required when not using /new/
+ENC_BRANCH=`echo -n $BRANCH | sed 's/\//%2F/g'`
+
+
+REMOTE=$(
+  git remote -v | grep 'origin.*push' \
+    | grep -oE '(bitbucket.org|github.com)[:/][^/]+/[^ ]+' \
+    | sed -E 's/(.*)\.git/\1/' \
+    | sed -E 's/(bitbucket.org|github.com):/\1\//' \
+) || (echo 'No remote for current directory' >&2 && exit 1)
+
+
+if [ ! "$REMOTE" ]; then
+  echo Repository not recognized:
+  git remote -v
+  exit 1
+fi
+
+if [ ! $NO_FETCH ]; then
+  CURL_OUT=/tmp/git-pr-`date +'%H%M%S'`
+# curl --head -s -o $CURL_OUT $URL/$ENC_BRANCH?access_token=$GITHUB_TOKEN  &
+  CURL=$!
+fi
+
+if [ ! $OLD ] && ! [ $NO_FETCH ] && ! LOG=`git log origin/$BRANCH..$BRANCH 2>/dev/null` || [ "$LOG" != "" ]; then
+  git push -u origin $BRANCH
+fi
+
+if [ ! $OLD ] && ! git-is-current -q $NO_FETCH $BRANCH; then
+  echo -n "Branch conflicts with origin/main, continue? [no] "
+  read CONSENT
+  if [ "$CONSENT" != "y" ] && [ "$CONSENT" != "yes" ]; then
+    exit 1
+  fi
+fi
+
+open() {
+    if which start &>/dev/null && ! [[ `uname -s` =~ Darwin|Linux ]]; then
+      start "$1"
+    elif which xdg-open &>/dev/null && ! [[ `uname -s` =~ Darwin ]]; then
+      xdg-open "$1"
+    elif which gnome-open &>/dev/null && ! [[ `uname -s` =~ Darwin ]]; then
+      gnome-open "$1"
+    elif which kde-open &>/dev/null && ! [[ `uname -s` =~ Darwin ]]; then
+      kde-open "$1"
+    else
+      command open "$1"
+    fi
+}
+
+if echo $REMOTE | grep -q bitbucket.org; then
+  URL="https://$REMOTE"
+  if [ $OLD ]; then
+    open "$URL/src/$BRANCH"
+  else
+    open "$URL/pull-request/new?source=$BRANCH"
+  fi
+else
+  USER=`echo $REMOTE | perl -pe 's|github.com.([^/]+)/.*|$1|'`
+  REPO=`echo $REMOTE | perl -pe 's|github.com.[^/]+/(.*)|$1|'`
+  URL=https://github.com/$USER/$REPO
+
+  #if [ ! $NO_FETCH ] && wait $CURL && grep '1 302' $CURL_OUT &>/dev/null; then
+  if [ $OLD ]; then
+    open $URL/pull/$ENC_BRANCH
+  else
+    open $URL/compare/$BRANCH?expand=1
+  fi
+fi

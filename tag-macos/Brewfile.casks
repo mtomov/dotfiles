@@ -1,0 +1,42 @@
+# Cask: install binaries.
+# These are in a separate file so that install.sh can let installing these casks
+# "fail" when the apps are actually already installed.
+
+tap "homebrew/cask-fonts"
+cask "font-iosevka"
+cask "font-inconsolata"
+cask "font-hasklig"
+
+cask "1password"
+cask "alacritty"
+cask "authy"
+
+cask "apptivate"
+# cask "anki"
+# cask "appcleaner"
+# cask "bartender"
+# cask "beardedspice"
+# cask "chatology"
+# cask "choosy"
+# cask "coconutbattery"
+# cask "dash"
+cask "firefox"
+cask "github"
+# cask "muzzle"
+cask "google-chrome"
+cask "notion"
+# cask "netnewswire"
+# cask "ngrok"
+
+# Needs manual installation
+# https://postgresapp.com/downloads.html
+# cask "postgres" # Postgres.app
+
+cask "qlstephen" # quicklook plain text files
+cask "postman"
+cask "rectangle"
+cask "slack"
+cask "vlc"
+cask "xee"
+cask "visual-studio-code"
+cask "zoom"

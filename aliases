@@ -1,0 +1,59 @@
+alias tlf="tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias ls='ls --color=auto'
+alias ll='ls -alh'
+alias lh='ls -Alh'
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+alias -g ONE="| awk '{ print \$1}'"
+alias v="$VISUAL"
+
+alias free="free -m"
+alias open=xdg-open
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+alias di='dirs -v | head -10'
+
+# Git
+alias p='git pull'
+alias gui='git gui'
+alias l='lazygit'
+
+# Bundler
+alias b="bundle"
+
+
+# Rails
+alias redo="rails db:redo"
+alias m="rails db:migrate"
+alias r="bin/rails r"
+alias s="bin/rails s"
+alias c="bin/rails c"
+alias d="bin/dev"
+alias dev="bin/dev"
+alias w="bin/web"
+alias cap='bundle exec cap'
+alias aw='tail -f -n200 log/awesome.log'
+
+# Docker
+alias dl="docker-compose logs -f --tail=50"
+# alias du="docker-compose up -d"
+alias ds="docker-compose stop"
+
+function de() {
+  docker exec -ti $1 bash
+}
+function dce() {
+  docker-compose exec $1 bash
+}
+function docker-stop() {
+  docker stop $(docker ps -a -q)
+}
+function docker-remove() {
+  docker rm $(docker ps -a -q)
+}

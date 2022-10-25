@@ -1,0 +1,87 @@
+[format]
+  pretty = %C(red)%H%n%C(green)%an, %cr%n%n%C(magenta)%s%n%b%n
+
+[pull]
+  default = current
+	rebase = false
+[push]
+  default = current
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore
+  pager = less -FRX
+[color]
+  ui = auto
+[alias]
+  aa = add --all
+  ap = add --patch
+  c = commit --verbose
+  ca = commit --amend
+  ci = commit -v
+  co = checkout
+  r = rebase -i origin/main
+  cp = cherry-pick
+  br = branch
+  cont = rebase --continue
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+  pr = !gh pull-request
+  st = stash
+  up = rebase -i origin/main
+  to-staging = !git co staging && git merge - -Xtheirs && git checkout -
+  to-staging-and-deploy = !git co staging && git merge - -Xtheirs && git push && git checkout - && bundle exec cap staging deploy
+  slog = log --no-merges --pretty=format:\"%h  %Cblue%<(15)%an%Creset %Cgreen%s%Creset\"
+  l = log main.. --reverse --format="%B%n---%n"
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -n 1 git branch -d"
+	cb = rev-parse --abbrev-ref HEAD # Print the current branch name
+  spike = "!git checkout -b $(git cb)-spike; git checkout -"
+  origin-head = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  # up = !git pull origin $(git origin-head) --rebase
+  next = !git add . && git rebase --continue
+  # The advantage of --force-with-lease over --force is that it won't push if
+  # you haven't already seen the ref you're overwriting. It avoids the race
+  # condition of accidentally "push -f"ing over a commit you haven't seen.
+  pf = push --force-with-lease --set-upstream
+[fetch]
+  prune = true
+[commit]
+  # template = ~/.gitmessage
+  verbose = true
+[grep]
+  # http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/
+  extendRegexp = true
+  lineNumber = true
+[fetch]
+  prune = true
+
+[gui]
+	tabsize = 2
+	fontui = -family \"DejaVu Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"DejaVu Sans Mono\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	maxrecentrepo = 5
+	gcwarning = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+[merge]
+  tool = code
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[diff]
+  tool = code
+[difftool "vscode"]
+  cmd = code -n --wait --diff $LOCAL $REMOTE
+[pager]
+	branch = false
+[submodule]
+	recurse = true
+[rebase]
+	autoStash = true
+[init]
+  templatedir = ~/.git-template
+  defaultBranch = main
+[include]
+  path = ~/.gitconfig.local
+[branch]
+  sort = -committerdate

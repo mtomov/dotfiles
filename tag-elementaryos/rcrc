@@ -1,0 +1,5 @@
+DOTFILES_DIRS="$HOME/projects/dotfiles $HOME/projects/dotfiles-private"
+EXCLUDES="helpful-tips system install README.md terminal-themes setup slack-themes vscode"
+SYMLINK_DIRS="irbrc.d Notes fonts ssh zsh"
+TAGS="git ruby javascript elementaryos"
+UNDOTTED="bin Notes"

@@ -1,0 +1,12 @@
+# Local config
+*.local
+
+# zcompile'd files
+*.zwc
+*.zwc.old
+
+Brewfile*.lock.json
+
+ssh/id_ecdsa*
+
+tag-karabiner/config/karabiner/automatic_backups/*

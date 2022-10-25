@@ -1,0 +1,128 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier (on my keyboard):
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+# Another way to specifie a key is to use 'xev' and set the
+# keycode with c:nnn or the modifier with m:nnn where nnn is
+# the keycode or the state returned by xev
+#
+# This file is created by xbindkey_config
+# The structure is :
+# # Remark
+# "command"
+# m:xxx + c:xxx
+# Shift+...
+
+
+
+
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
+
+
+
+# Mouse middle button click - close window
+"xte 'keydown Control_L' 'key w' 'keyup Control_L'"
+   b:2
+
+# Forward navigation
+"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+   b:8
+
+# Back navigation
+"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
+   b:9
+
+# Next tab
+"xte 'keydown Control_L' 'key Page_Down'"
+   Control + b:8
+
+# Previous Tab
+"xte 'keydown Control_L' 'key Page_Up'"
+   Control + b:9
+
+"xrandr --output eDP-1 --primary"
+   Mod4 + Insert
+
+"xrandr --output HDMI-1 --primary"
+   Mod4 + Delete
+
+"xrandr --output eDP-1 --pos 0x0 --output HDMI-1 --pos 1920x0"
+   Mod4 + Prior
+
+"xrandr --output HDMI-1 --pos 0x0 --output eDP-1 --pos 2560x0"
+   Mod4 + Next
+
+# Close tab
+"xdotool getwindowfocus key ctrl+w"
+   m:0x10 + c:73
+   Mod2 + F7
+
+# Previous Tab
+# "xdotool getwindowfocus key ctrl+Page_Up"
+#    Mod2 + F11
+
+# # Next tab
+# "xdotool getwindowfocus key ctrl+Page_Down"
+#    Mod2 + F12
+
+# Left alt
+"jumpapp firefox"
+   Mod4 + 3
+
+"jumpapp code"
+   Mod4 + 2
+
+"jumpapp io.elementary.terminal"
+   Mod4 + 1
+
+"jumpapp google-chrome"
+   Mod4 + 4
+
+# "jumpapp genymotion"
+#    Mod4 + 6
+
+# "jumpapp subl"
+"jumpapp -f io.elementary.files"
+   Mod4 + 5
+
+# "jumpapp -f signal-desktop --start-in-tray"
+#    Mod4 + 9
+
+"jumpapp -f /opt/viber/Viber"
+   Mod4 + 9
+
+"jumpapp -f slack"
+   Mod4 + 0
+
+"jumpapp google-chrome"
+   m:0x41 + c:133
+
+"pacmd set-default-sink 'alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo'"
+   Mod4 + Next
+
+"pacmd set-default-sink 'alsa_output.pci-0000_00_1b.0.analog-stereo'"
+   Mod4 + Prior
+
+"rfkill unblock bluetooth"
+   Mod4 + b
+
+"~/bin/switch_layout"
+   F1
+
+#
+# End of xbindkeys configuration
