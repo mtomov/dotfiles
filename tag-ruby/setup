@@ -21,4 +21,5 @@ if rbenv versions | rg "$(latest_ruby_version)" > /dev/null; then
 else
   rbenv install "$(latest_ruby_version)"
   rbenv global "$(latest_ruby_version)"
+  gem install solargraph htmlbeautifier
 fi

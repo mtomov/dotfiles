@@ -39,7 +39,9 @@ snapd
 software-properties-common
 uuid-dev
 wget
+xautomation
 xbindkeys
 xclip
+xdotools
 zlib1g-dev
 zsh

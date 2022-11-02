@@ -89,6 +89,9 @@ if ! command -v jumpapp &> /dev/null; then
   curl https://github.com/mkropat/jumpapp/releases/download/v1.2/jumpapp_1.2-1_all.deb -o /tmp/jumpapp.deb && sudo dpkg -i /tmp/jumpapp.deb
 fi
 
+# See point 4 below
+# curl https://github.com/Lafydev/wingpanel-indicator-ayatana/blob/master/com.github.lafydev.wingpanel-indicator-ayatana_2.0.8_odin.deb -o /tmp/ayatana.deb && sudo dpkg -i /tmp/ayatana.deb
+
 mkdir -p ~/work
 
 green "== Success!"
@@ -98,3 +101,4 @@ yellow "1. Install VSCode https://phoenixnap.com/kb/install-vscode-ubuntu#ftoc-h
 yellow "2. Install docker https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository"
 yellow "3. Install jumpapp https://github.com/mkropat/jumpapp#ubuntu-debian-and-friends"
 yellow "4. Bring back tray indicators https://github.com/Lafydev/wingpanel-indicator-ayatana"
+yellow "5. Install GH CLi https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git#github-cli"

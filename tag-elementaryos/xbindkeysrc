@@ -55,22 +55,34 @@
 "xte 'keydown Control_L' 'key Page_Up'"
    Control + b:9
 
+# Volume up
+# "xte 'key XF86AudioRaiseVolume'"
+#    Mod4 + b:8
+
+# # Lower Volume
+# "xte 'key XF86AudioLowerVolume'"
+#    Mod4 + c
+
 "xrandr --output eDP-1 --primary"
    Mod4 + Insert
 
 "xrandr --output HDMI-1 --primary"
    Mod4 + Delete
 
-"xrandr --output eDP-1 --pos 0x0 --output HDMI-1 --pos 1920x0"
-   Mod4 + Prior
+# "xrandr --output eDP-1 --pos 0x0 --output HDMI-1 --pos 1920x0"
+#    Mod4 + Prior
 
-"xrandr --output HDMI-1 --pos 0x0 --output eDP-1 --pos 2560x0"
-   Mod4 + Next
+# "xrandr --output HDMI-1 --pos 0x0 --output eDP-1 --pos 2560x0"
+#    Mod4 + Next
+
+# Firefox search bar
+"xdotool search 'Mozilla Firefox' windowactivate --sync key --clearmodifiers ctrl+l"
+   Mod4 + l
 
 # Close tab
-"xdotool getwindowfocus key ctrl+w"
-   m:0x10 + c:73
-   Mod2 + F7
+# "xdotool getwindowfocus key ctrl+w"
+#    m:0x10 + c:73
+#    Mod2 + F7
 
 # Previous Tab
 # "xdotool getwindowfocus key ctrl+Page_Up"
@@ -96,9 +108,11 @@
 # "jumpapp genymotion"
 #    Mod4 + 6
 
-# "jumpapp subl"
 "jumpapp -f io.elementary.files"
    Mod4 + 5
+
+"jumpapp -f git-gui"
+   Mod4 + 6
 
 # "jumpapp -f signal-desktop --start-in-tray"
 #    Mod4 + 9
