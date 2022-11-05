@@ -41,7 +41,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 #
 #
 #
@@ -49,16 +49,16 @@ source $ZSH/oh-my-zsh.sh
 #
 # User configuration
 # modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo "%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%} "
-  fi
-}
-setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+# git_prompt_info() {
+#   ref=$(git symbolic-ref HEAD 2> /dev/null)
+#   if [[ -n $ref ]]; then
+#     echo "%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%} "
+#   fi
+# }
+# setopt promptsubst
+# export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
-source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+# source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 
 # load our own completion functions
 
@@ -121,7 +121,7 @@ bindkey "^[[1;5D" backward-word
 [[ -f ~/.projects ]] && source ~/.projects
 
 
-export PATH="/home/martin/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
+export PATH="$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -147,13 +147,13 @@ alias zshconfig="code ~/.zshrc"
 # export PGUSER=postgres
 
 # for QHD display
-if [[ -z `xrandr | grep 2560x1440R` ]]
-then
-    xrandr --newmode "2560x1440R"  241.50  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
-    xrandr --addmode HDMI-1 2560x1440R
-fi
+# if [[ -z `xrandr | grep 2560x1440R` ]]
+# then
+#     xrandr --newmode "2560x1440R"  241.50  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
+#     xrandr --addmode HDMI-1-1 2560x1440R
+# fi
 
-# xrandr --output HDMI-1 --mode 2560x1440R
+# xrandr --output HDMI-1-1 --mode 2560x1440R
 
 # Configure BAT & RIPGREP
 if [[ -r ~/.rgrc ]]; then
@@ -162,6 +162,10 @@ fi
 export BAT_CONFIG_PATH="~/.config/bat/config"
 alias cat=bat
 alias less=bat
+
+# Prompt {{{
+eval "$(starship init zsh)"
+# }}}
 
 # Git
 gc(){
@@ -189,7 +193,7 @@ export PATH="$HOME/.yarn/bin:$PATH"
 # export PATH=$PATH:$ANDROID_HOME/platform-tools
 # export PATH=$PATH:$HOME/Programs/flutter/bin
 
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
+eval "$(rbenv init - zsh)"
 
 export PATH=".git/safe/../../bin:$PATH"
 
@@ -197,22 +201,22 @@ export PATH=".git/safe/../../bin:$PATH"
 # the following to ~/.zshrc:
 
 # export PATH="$HOME/.pyenv/versions/3.7.2/bin:$PATH"
-# export PATH="/home/martin/.pyenv/bin:$PATH"
+# export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 alias python=python3
 
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/martin/bin/go/bin
+# export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:$HOME/bin/go/bin
 
-export GOPATH="/home/martin/bin/go/"
+# export GOPATH="$HOME/bin/go/"
 
 #export OAUTH_DEBUG=true
-[ -f /home/martin/bin/kubectl ] && source <(kubectl completion zsh)
+[ -f "$HOME/bin/kubectl" ] && source <(kubectl completion zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fnm
-export PATH=/home/martin/.fnm:$PATH
+export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"

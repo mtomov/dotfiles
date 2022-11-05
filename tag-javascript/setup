@@ -4,7 +4,7 @@ set -e
 
 echo 'Installing NodeJS 16 and Yarn...'
 if ! type "fnm" &> /dev/null; then
-  curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "./.fnm" --skip-shell
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "~/.fnm" --skip-shell
   export PATH=/home/martin/.fnm:$PATH
   eval "`fnm env`"
 

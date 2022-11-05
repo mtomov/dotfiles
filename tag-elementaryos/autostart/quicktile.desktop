@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name[en_GB]=Quicktile
+Comment[en_GB]=quicktile --daemonize
+Exec=~/bin/quicktile -d
+Icon=application-default-icon
+Type=Application
+X-GNOME-Autostart-enabled=true

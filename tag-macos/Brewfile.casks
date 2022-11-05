@@ -7,11 +7,11 @@ cask "font-iosevka"
 cask "font-inconsolata"
 cask "font-hasklig"
 
-cask "1password"
-cask "alacritty"
-cask "authy"
+# cask "1password"
+# cask "alacritty"
+# cask "authy"
 
-cask "apptivate"
+# cask "apptivate"
 # cask "anki"
 # cask "appcleaner"
 # cask "bartender"
@@ -21,22 +21,23 @@ cask "apptivate"
 # cask "coconutbattery"
 # cask "dash"
 cask "firefox"
-cask "github"
+# cask "github"
 # cask "muzzle"
 cask "google-chrome"
-cask "notion"
+# cask "notion"
 # cask "netnewswire"
 # cask "ngrok"
 
 # Needs manual installation
 # https://postgresapp.com/downloads.html
 # cask "postgres" # Postgres.app
+cask "postgres-unofficial"
 
-cask "qlstephen" # quicklook plain text files
-cask "postman"
-cask "rectangle"
+# cask "qlstephen" # quicklook plain text files
+# cask "postman"
+# cask "rectangle"
 cask "slack"
-cask "vlc"
-cask "xee"
+# cask "vlc"
+# cask "xee"
 cask "visual-studio-code"
-cask "zoom"
+# cask "zoom"

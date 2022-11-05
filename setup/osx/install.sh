@@ -54,16 +54,10 @@ if command_does_not_exist brew; then
 fi
 
 info "Installing Homebrew packages..."
-brew tap homebrew/bundle
-brew install mas 2>/dev/null
-for brewfile in Brewfile */Brewfile; do
-  quietly_brew_bundle "$brewfile" --verbose
-done
+quietly_brew_bundle tag-macos/Brewfile --verbose
 
 # Brewfile.casks exits 1 sometimes but didn't actually fail
-quietly_brew_bundle Brewfile.casks || true
-# Pin postgresql since I use Postgres.app and we only need it as a dependency
-brew pin postgresql
+quietly_brew_bundle tag-macos/Brewfile.casks || true
 
 if ! echo "$SHELL" | grep -Fq zsh; then
   info "Your shell is not Zsh. Changing it to Zsh..."
@@ -72,28 +66,26 @@ fi
 
 info "Linking dotfiles into ~..."
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
-# We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
-# backup files that slow it down significantly.
-export RCRC=rcrc
-stay_awake_while rcup -d .
+export RCRC=tag-macos/rcrc
+rcup
 
 info "Creating ~/Pictures/screenshots so screenshots can be saved there..."
 mkdir -p ~/Pictures/screenshots
 
-stay_awake_while ./system/osx-settings.sh
-stay_awake_while ./system/terminal-settings.sh
+# stay_awake_while ./system/osx-settings.sh
+# stay_awake_while ./system/terminal-settings.sh
 
-info "Running all setup scripts..."
-for setup in tag-*/setup vscode/setup; do
-  dir=$(basename "$(dirname "$setup")")
-  info "Running setup for ${dir#tag-}..."
-  . "$setup"
-done
+# info "Running all setup scripts..."
+# for setup in tag-*/setup vscode/setup; do
+#   dir=$(basename "$(dirname "$setup")")
+#   info "Running setup for ${dir#tag-}..."
+#   . "$setup"
+# done
 
-mkdir -p ~/code/work
-mkdir -p ~/code/personal
+# mkdir -p ~/code/work
+# mkdir -p ~/code/personal
 
 green "== Success!"
 
-yellow "== Post-install instructions =="
-yellow "1. Install Postgres.app manually https://postgresapp.com/downloads.html"
+# yellow "== Post-install instructions =="
+# yellow "1. Install Postgres.app manually https://postgresapp.com/downloads.html"

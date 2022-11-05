@@ -11,4 +11,4 @@ d() {
 }
 
 # Complete d like docker
-compdef d=docker
+# compdef d=docker

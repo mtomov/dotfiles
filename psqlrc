@@ -1,5 +1,3 @@
--- vim: ft=sql
-
 -- Official docs: http://www.postgresql.org/docs/9.3/static/app-psql.html
 -- http://craigkerstiens.com/2013/02/13/How-I-Work-With-Postgres/
 -- https://github.com/hgmnz/dotfiles/blob/master/psqlrc
