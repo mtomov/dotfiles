@@ -35,7 +35,8 @@ cask "postgres-unofficial"
 
 # cask "qlstephen" # quicklook plain text files
 # cask "postman"
-# cask "rectangle"
+cask "karabiner-elements"
+cask "rectangle"
 cask "slack"
 # cask "vlc"
 # cask "xee"

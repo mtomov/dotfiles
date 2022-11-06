@@ -158,13 +158,16 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 
 # Show indicator lights under open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
+# defaults write com.apple.dock show-process-indicators -bool true
 
 # Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+# defaults write com.apple.dock showhidden -bool true
 
 # Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 72
+# defaults write com.apple.dock tilesize -int 72
+
+# Automatically hide
+defaults write com.apple.dock autohide -int 1
 
 # remove delay when moving mouse to the bottom
 defaults write com.apple.dock autohide-delay -int 0

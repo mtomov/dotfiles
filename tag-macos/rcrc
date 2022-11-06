@@ -1,5 +1,5 @@
 DOTFILES_DIRS="$HOME/projects/dotfiles $HOME/projects/dotfiles-private"
 EXCLUDES="helpful-tips system README.md Brewfile Brewfile.casks terminal-themes install.sh setup slack-themes vscode fonts"
-SYMLINK_DIRS="irbrc.d Notes ssh zsh"
-TAGS="macos git"
+SYMLINK_DIRS="irbrc.d Notes ssh zsh karabiner"
+TAGS="macos git karabiner"
 UNDOTTED="bin Library"

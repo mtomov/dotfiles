@@ -12,7 +12,7 @@ alias -g ONE="| awk '{ print \$1}'"
 alias v="$VISUAL"
 
 alias free="free -m"
-alias open=xdg-open
+# alias open=xdg-open
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'

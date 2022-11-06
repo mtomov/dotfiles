@@ -24,6 +24,7 @@ brew "redis"
 brew "tree"
 # brew "vim"
 brew "git-delta"
+brew "libpq"
 
 # sed for json: https://robots.thoughtbot.com/jq-is-sed-for-json
 # brew "jq"

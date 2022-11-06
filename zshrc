@@ -1,3 +1,6 @@
+# Remove Last login prompt from MacOS
+printf '\33c\e[3J'
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -220,3 +223,4 @@ alias python=python3
 # fnm
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

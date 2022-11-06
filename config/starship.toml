@@ -15,12 +15,13 @@ $git_status\
 \\$ """
 
 [time]
-disabled = false
+disabled = true
 format = "[$time]($style) "
 style = "#888888"
 use_12hr = true
 
 [ruby]
+disabled = true
 format = "[($version )]($style)"
 style = "fg:218" # pink
 
@@ -61,6 +62,7 @@ ahead = "[↑](bold fg:159)" # cyan
 diverged = "[⇔](bold fg:197)" # red
 
 [nodejs]
+disabled = true
 # Don't show "v3", just "3"
 version_format = "${raw}"
 detect_files = ["package.json", ".node-version", "yarn.lock"]

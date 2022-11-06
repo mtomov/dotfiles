@@ -236,7 +236,8 @@
   "typescript.format.enable": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vscodeWorkspaceSwitcher.paths": [
-    "~/code/*",
+    "~/work/*",
+    "~/projects/*"
   ],
   "vscodeWorkspaceSwitcher.showInExplorer": false,
   "vscodeWorkspaceSwitcher.showTreeView": false,
