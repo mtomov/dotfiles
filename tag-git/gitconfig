@@ -55,15 +55,10 @@
 
 [gui]
 	tabsize = 2
-	fontui = -family \"DejaVu Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"DejaVu Sans Mono\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Avenir Next\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Menlo -size 18 -weight normal -slant roman -underline 0 -overstrike 0
 	maxrecentrepo = 5
 	gcwarning = false
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
 [merge]
   tool = code
 [mergetool "code"]
@@ -91,3 +86,8 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

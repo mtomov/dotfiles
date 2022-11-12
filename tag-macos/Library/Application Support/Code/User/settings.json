@@ -252,7 +252,6 @@
     "tab.activeBackground": "#ff0a7c0a",
   },
   "workbench.colorTheme": "Tomorrow_Night_Eighties",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.labelFormat": "short",
   "workbench.editor.limit.enabled": true,
   "workbench.iconTheme": "vscode-icons",
@@ -275,9 +274,7 @@
   "workbench.editor.revealIfOpen": true,
   "explorer.autoReveal": "focusNoScroll",
   "workbench.editor.scrollToSwitchTabs": true,
-  "workbench.editor.enablePreviewFromCodeNavigation": true,
   "gitlens.mode.active": "zen",
-  "workbench.editor.enablePreview": false,
   "gitlens.views.showRelativeDateMarkers": false,
   "gitlens.views.commits.avatars": false,
   "gitlens.views.commits.showBranchComparison": false,
@@ -290,5 +287,7 @@
   "workbench.commandPalette.preserveInput": true,
   "gitlens.gitCommands.sortBy": "name",
   "diffEditor.ignoreTrimWhitespace": false,
-  "liquid.format": true
+  "liquid.format": true,
+  "solargraph.bundlerPath": "/Users/martin/.rbenv/shims/bundle",
+  // "solargraph.commandPath": "/Users/martin/.rbenv/shims/solargraph"
 }

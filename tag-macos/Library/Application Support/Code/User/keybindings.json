@@ -318,26 +318,6 @@
     "command": "vscodeWorkspaceSwitcher.openWorkspaceInNewWindow"
   },
   {
-    "key": "alt+shift+down",
-    "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+cmd+down",
-    "command": "-editor.action.moveLinesDownAction",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+up",
-    "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+cmd+up",
-    "command": "-editor.action.moveLinesUpAction",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+pagedown",
     "command": "workbench.action.nextEditor"
   },
@@ -367,23 +347,8 @@
     "command": "-workbench.action.switchWindow"
   },
   {
-    "key": "shift+cmd+d",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorFocus"
-  },
-  {
     "key": "ctrl+shift+p",
     "command": "workbench.action.showCommands"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "shift+alt+up",
-    "command": "-editor.action.copyLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "key": "ctrl+]",
@@ -530,7 +495,7 @@
   {
     "key": "cmd+k cmd+s",
     "command": "git.stageSelectedRanges",
-    "when": "isInDiffEditor"
+    "when": "editorHasSelection"
   },
   {
     "key": "cmd+k alt+cmd+s",
@@ -539,7 +504,8 @@
   },
   {
     "key": "cmd+k cmd+u",
-    "command": "git.undoCommit"
+    "command": "git.undoCommit",
+    "when": "!isInDiffEditor"
   },
   {
     "key": "cmd+k cmd+a",
@@ -562,10 +528,6 @@
     "command": "git.publish"
   },
   {
-    "key": "ctrl+3",
-    "command": "workbench.action.focusPanel"
-  },
-  {
     "key": "cmd+k cmd+c",
     "command": "-editor.action.addCommentLine",
     "when": "editorTextFocus && !editorReadonly"
@@ -577,38 +539,6 @@
   {
     "key": "cmd+k cmd+d",
     "command": "git.deleteBranch"
-  },
-  {
-    "key": "ctrl+=",
-    "command": "workbench.action.navigateForwardInEditLocations"
-  },
-  {
-    "key": "ctrl+-",
-    "command": "workbench.action.navigateBackInEditLocations"
-  },
-  {
-    "key": "ctrl+shift+cmd+-",
-    "command": "workbench.action.navigateBackInNavigationLocations"
-  },
-  {
-    "key": "cmd+k =",
-    "command": "workbench.action.navigateForwardInNavigationLocations"
-  },
-  {
-    "key": "cmd+k cmd+=",
-    "command": "workbench.action.navigateForward"
-  },
-  {
-    "key": "ctrl+shift+-",
-    "command": "-workbench.action.navigateForward"
-  },
-  {
-    "key": "ctrl+shift+-",
-    "command": "workbench.action.navigateBack"
-  },
-  {
-    "key": "ctrl+-",
-    "command": "-workbench.action.navigateBack"
   },
   {
     "key": "shift+cmd+m",
@@ -668,5 +598,49 @@
     "key": "shift+f12",
     "command": "-editor.action.goToReferences",
     "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+shift+=",
+    "command": "workbench.action.navigateForwardInEditLocations"
+  },
+  {
+    "key": "ctrl+=",
+    "command": "workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "-workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "workbench.action.navigateBackInEditLocations"
+  },
+  {
+    "key": "ctrl+shift+cmd+-",
+    "command": "workbench.action.navigateBackInNavigationLocations"
+  },
+  {
+    "key": "ctrl+shift+cmd+=",
+    "command": "workbench.action.navigateForwardInNavigationLocations"
+  },
+  {
+    "key": "cmd+k cmd+u",
+    "command": "git.unstageSelectedRanges",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "cmd+k cmd+n",
+    "command": "-git.unstageSelectedRanges",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "f7",
+    "command": "editor.action.goToDeclaration"
+  },
+  {
+    "key": "alt+cmd+down",
+    "command": "-editor.action.goToDeclaration"
   }
 ]
