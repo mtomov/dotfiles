@@ -184,12 +184,12 @@
   {
     "key": "f5",
     "command": "extension.runSpecLine",
-    "when": "editorLangId == ruby"
+    "when": "editorLangId == ruby && !inDebugMode"
   },
   {
     "key": "f8",
     "command": "extension.runFileSpecs",
-    "when": "editorLangId == ruby"
+    "when": "editorLangId == ruby && !inDebugMode"
   },
   {
     "key": "shift+meta+t",
@@ -493,7 +493,7 @@
     "command": "editor.action.transformToUppercase"
   },
   {
-    "key": "cmd+k cmd+s",
+    "key": "cmd+g cmd+s",
     "command": "git.stageSelectedRanges",
     "when": "editorHasSelection"
   },
@@ -503,20 +503,20 @@
     "when": "isInDiffEditor"
   },
   {
-    "key": "cmd+k cmd+u",
+    "key": "cmd+g cmd+u",
     "command": "git.undoCommit",
     "when": "!isInDiffEditor"
   },
   {
-    "key": "cmd+k cmd+a",
+    "key": "cmd+g cmd+a",
     "command": "git.commitStagedAmend"
   },
   {
-    "key": "cmd+k cmd+p",
+    "key": "cmd+g cmd+p",
     "command": "git.push"
   },
   {
-    "key": "cmd+k cmd+f",
+    "key": "cmd+g cmd+f",
     "command": "git.pushForce"
   },
   {
@@ -533,11 +533,7 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "cmd+k cmd+c",
-    "command": "git.checkout"
-  },
-  {
-    "key": "cmd+k cmd+d",
+    "key": "cmd+g cmd+d",
     "command": "git.deleteBranch"
   },
   {
@@ -551,7 +547,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "cmd+k cmd+s",
+    "key": "cmd+g cmd+s",
     "command": "git.stage",
     "when": "!editorHasSelection"
   },
@@ -626,7 +622,7 @@
     "command": "workbench.action.navigateForwardInNavigationLocations"
   },
   {
-    "key": "cmd+k cmd+u",
+    "key": "cmd+g cmd+u",
     "command": "git.unstageSelectedRanges",
     "when": "isInDiffEditor"
   },
@@ -642,5 +638,33 @@
   {
     "key": "alt+cmd+down",
     "command": "-editor.action.goToDeclaration"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.action.pinEditor",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "key": "cmd+k shift+enter",
+    "command": "-workbench.action.pinEditor",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.action.unpinEditor",
+    "when": "activeEditorIsPinned"
+  },
+  {
+    "key": "cmd+k shift+enter",
+    "command": "-workbench.action.unpinEditor",
+    "when": "activeEditorIsPinned"
+  },
+  {
+    "key": "cmd+g c",
+    "command": "git.checkout"
+  },
+  {
+    "key": "cmd+g cmd+c",
+    "command": "git.commit"
   }
 ]

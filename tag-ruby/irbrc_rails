@@ -57,24 +57,22 @@ def fuser(email)
   User.find_by(email: email)
 end
 
-def fmessage(message_id)
-  Email::Message.find_by(message_ext_id: message_id)
-end
-
 # M = Email::Message
 # A = Email::Address
-# R = Email::Recipient
+if defined?(Renalware)
+  R = Renalware
+end
 
 # set a nice prompt
-# rails_root = File.basename(Dir.pwd)
-# IRB.conf[:PROMPT] ||= {}
-# IRB.conf[:PROMPT][:RAILS] = {
-#   :PROMPT_I => "#{rails_root}> ",
-#   :PROMPT_S => "#{rails_root}* ",
-#   :PROMPT_C => "#{rails_root}? ",
-#   :RETURN   => "=> %s\n"
-# }
-# IRB.conf[:PROMPT_MODE] = :RAILS
+rails_root = File.basename(Dir.pwd)
+IRB.conf[:PROMPT] ||= {}
+IRB.conf[:PROMPT][:RAILS] = {
+  :PROMPT_I => "#{rails_root}> ",
+  :PROMPT_S => "#{rails_root}* ",
+  :PROMPT_C => "#{rails_root}? ",
+  :RETURN   => "=> %s\n"
+}
+IRB.conf[:PROMPT_MODE] = :RAILS
 
 # turn on the loud logging by default
 IRB.conf[:IRB_RC] = proc { quiet_logger }
