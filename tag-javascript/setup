@@ -8,7 +8,7 @@ if ! type "fnm" &> /dev/null; then
   export PATH=/home/martin/.fnm:$PATH
   eval "`fnm env`"
 
-  fnm install 16
+  fnm install 18
 fi
 
 if ! type "prettier" &> /dev/null; then

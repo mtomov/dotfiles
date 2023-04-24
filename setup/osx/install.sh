@@ -72,8 +72,8 @@ rcup
 info "Creating ~/Pictures/screenshots so screenshots can be saved there..."
 mkdir -p ~/Pictures/screenshots
 
-# stay_awake_while ./system/osx-settings.sh
-# stay_awake_while ./system/terminal-settings.sh
+stay_awake_while ./tag-macos/system/osx-settings.sh
+stay_awake_while ./tag-macos/system/terminal-settings.sh
 
 # info "Running all setup scripts..."
 # for setup in tag-*/setup vscode/setup; do
@@ -82,7 +82,7 @@ mkdir -p ~/Pictures/screenshots
 #   . "$setup"
 # done
 
-# mkdir -p ~/code/work
+mkdir -p ~/code/work
 # mkdir -p ~/code/personal
 
 green "== Success!"
