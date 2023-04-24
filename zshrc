@@ -73,7 +73,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=()
+plugins=(fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -235,8 +235,10 @@ export PATH=".git/safe/../../bin:$PATH"
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
-alias python=python3
-
+# alias python=python3
+# eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+# export PATH=$PATH:/Users/martin/Library/Python/3.9/bin
+# export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
 
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:$HOME/bin/go/bin
@@ -251,4 +253,7 @@ alias python=python3
 # fnm
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
+export PATH=/Users/martin/Library/Python/3.10/bin:$PATH
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
