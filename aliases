@@ -9,7 +9,6 @@ alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
-alias v="$VISUAL"
 
 alias free="free -m"
 # alias open=xdg-open
@@ -57,4 +56,8 @@ function docker-stop() {
 }
 function docker-remove() {
   docker rm $(docker ps -a -q)
+}
+
+function convert_video_from_mov_to_webm() {
+  ffmpeg -y -i ~/Pictures/screenshots/Screen* ~/Pictures/screenshots/out.webm && rm -f ~/Pictures/screenshots/Screen*
 }
