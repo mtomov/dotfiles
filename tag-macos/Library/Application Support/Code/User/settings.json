@@ -236,6 +236,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vscodeWorkspaceSwitcher.paths": [
     "~/work/*",
+    "~/beam/*",
     "~/projects/*"
   ],
   "vscodeWorkspaceSwitcher.showInExplorer": false,
@@ -283,24 +284,9 @@
   "testExplorer.useNativeTesting": true,
   "workbench.commandPalette.preserveInput": true,
   "gitlens.gitCommands.sortBy": "name",
-  "liquid.format": true,
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "scm.repositories.visible": 1,
   "githubPullRequests.pullBranch": "never",
-  "ruby.rubocop.onSave": false,
-  "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "/Users/martin/.rbenv/shims/bundle",
   "notebook.output.textLineLimit": 90,
-  // "python.venvPath": "/Users/martin/.local/share/virtualenvs/embedding_extractor-s0Qj4iay",
-  "python.defaultInterpreterPath": "/Users/martin/.local/share/virtualenvs/embedding_extractor-s0Qj4iay",
-  "gitlens.mode.active": "zen",
-  "window.zoomLevel": -1,
-  // "ruby.interpreter.commandPath": "/Users/martin/.rbenv/shims/ruby",
-  // "ruby.rubocop.useServer": true,
-  // "format-erb.commandPath": "/Users/martin/.rbenv/shims/htmlbeautifier",
-  // "solargraph.useBundler": true,
-  // "solargraph.commandPath": "/Users/martin/.rbenv/shims/solargraph",
-  // "ruby.rubocop.useBundler": true,
-  // "ruby.useBundler": true,
-  // "solargraph.commandPath": "/Users/martin/.rbenv/shims/solargraph"
+  "gitlens.mode.active": "zen"
 }

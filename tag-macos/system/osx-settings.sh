@@ -3,6 +3,8 @@
 
 # Useful tips from: https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
+# See guide at
+# https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -45,8 +47,8 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-# Enable Tap to click
-defaults -currentHost write -globalDomain com.apple.mouse.tapBehavior -int 1
+# System Preferences > Trackpad > Tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -88,7 +90,7 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Show Path bar at bottom of Finder window
-# defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Show Status bar in Finder (N items, N.NN GB available)
 defaults write com.apple.finder ShowStatusBar -bool true
@@ -174,6 +176,52 @@ defaults write com.apple.dock autohide-delay -int 0
 
 # use a small animataion time for the docker to appear
 defaults write com.apple.dock autohide-time-modifier -float 0.4
+
+# Swap left and right mouse buttons
+defaults -currentHost write .GlobalPreferences com.apple.mouse.swapLeftRightButton -bool true
+
+# Change keyboard shortcuts
+# Use F1 to change keyboard layout
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 61 "{ enabled = 1; value = { parameters = (65535, 122, 8388608); type = 'standard'; }; }"
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 60 "{ enabled = 0; value = { parameters = (32, 49, 262144); type = 'standard'; }; }"
+
+# Use Cmd + Shift + 4 to copy screenshot to clipboard
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 31 "{ enabled = 1; value = { parameters = (52, 21, 1179648); type = 'standard'; }; }"
+
+# Use Cmd + Shift + Ctrl + 4 to save screenshot to file
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 30 "{ enabled = 1; value = { parameters = (52, 21, 1441792); type = 'standard'; }; }"
+
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Finder: disable window animations and Get Info animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Use column view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`, `Nlsv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+
+#############
 
 # Kill affected applications
 for app in Safari Finder Dock Mail SystemUIServer; do
