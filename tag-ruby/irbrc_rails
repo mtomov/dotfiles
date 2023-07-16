@@ -8,7 +8,7 @@ rescue LoadError
 end
 
 require "logger"
-require "awesome_print"
+require "amazing_print"
 
 def loud_logger
   enable_hirb

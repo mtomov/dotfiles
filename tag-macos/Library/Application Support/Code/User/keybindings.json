@@ -1,15 +1,15 @@
 [
   {
     "key": "shift+cmd+1",
-    "command": "workbench.action.editorLayoutSingle",
+    "command": "workbench.action.editorLayoutSingle"
   },
   {
     "key": "shift+cmd+2",
-    "command": "workbench.action.editorLayoutTwoColumns",
+    "command": "workbench.action.editorLayoutTwoColumns"
   },
   {
     "key": "shift+alt+3",
-    "command": "workbench.action.editorLayoutThreeColumns",
+    "command": "workbench.action.editorLayoutThreeColumns"
   },
   {
     "key": "shift+cmd+2",
@@ -99,7 +99,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+\\",
+    "key": "cmd+[IntlBackslash]",
     "command": "workbench.action.toggleSidebarVisibility"
   },
   {
@@ -543,7 +543,7 @@
     "when": "!editorHasSelection"
   },
   {
-    "key": "cmd+k q",
+    "key": "cmd+k cmd+o",
     "command": "git.closeAllDiffEditors"
   },
   {
@@ -706,5 +706,33 @@
     "key": "f10",
     "command": "-workbench.action.debug.stepOver",
     "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "quickOpenRails.open"
+  },
+  {
+    "key": "cmd+.",
+    "command": "erb.toggleTags",
+    "when": "editorTextFocus && editorLangId == 'erb'"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-erb.toggleTags",
+    "when": "editorTextFocus && editorLangId == 'erb'"
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "alt+\\",
+    "command": "-editor.action.inlineSuggest.trigger",
+    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "workbench.action.tasks.reRunTask"
   }
 ]

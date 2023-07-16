@@ -2,38 +2,15 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
-  },
-  "[erb]": {
-    "editor.defaultFormatter": "tomclose.format-erb"
-  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+  "[erb]": {
+    "editor.defaultFormatter": "elia.erb-formatter",
+    "editor.autoClosingBrackets": "never"
   },
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  "[ruby]": {
-    "editor.defaultFormatter": "castwide.solargraph"
   },
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -48,30 +25,16 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "breadcrumbs.enabled": true,
-  "cSpell.userWords": [
-    "Gbutton",
-    "Gdocs",
-    "Hoverable",
-    "gnar",
-    "grammarly"
-  ],
-  "css.customData": [
-    ".vscode/css_custom_data.json"
-  ],
-  "dart.debugExternalPackageLibraries": false,
-  "dart.debugSdkLibraries": false,
+  "css.customData": [".vscode/css_custom_data.json"],
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "Hasklig, Inconsolata, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveTimeout": 2500,
   "editor.formatOnType": true,
-  "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
@@ -79,7 +42,6 @@
   "editor.mouseWheelZoom": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderLineHighlight": "gutter",
-  "editor.snippetSuggestions": "top",
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
@@ -94,11 +56,7 @@
     ]
   },
   "editor.wordWrap": "on",
-  "emmet.excludeLanguages": [
-    "markdown",
-    "typescript",
-    "typescriptreact"
-  ],
+  "emmet.excludeLanguages": ["markdown", "typescript", "typescriptreact"],
   "emmet.includeLanguages": {
     "erb": "html"
   },
@@ -151,18 +109,9 @@
   "github.preferedMergeMethod": "rebase",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.telemetry.enabled": false,
-  "gitlens.blame.highlight.locations": [
-    "gutter",
-    "overview"
-  ],
-  "gitlens.changes.locations": [
-    "gutter",
-    "overview"
-  ],
-  "gitlens.codeLens.scopes": [
-    "document",
-    "blocks"
-  ],
+  "gitlens.blame.highlight.locations": ["gutter", "overview"],
+  "gitlens.changes.locations": ["gutter", "overview"],
+  "gitlens.codeLens.scopes": ["document", "blocks"],
   "gitlens.views.repositories.files.layout": "list",
   "gitlens.views.repositories.showBranches": false,
   "gitlens.views.repositories.showCommits": false,
@@ -170,7 +119,6 @@
   "gitlens.views.repositories.showRemotes": false,
   "gitlens.views.repositories.showStashes": false,
   "gitlens.views.repositories.showTags": false,
-  "html.format.endWithNewline": true,
   "html.format.templating": true,
   "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -195,19 +143,13 @@
   "prettier.singleQuote": true,
   "redhat.telemetry.enabled": false,
   "remote.SSH.configFile": "~/.ssh/config",
-  // Use Solargraph formatting instead
-  "ruby.format": false,
-  "ruby.lint": {
-    "rubocop": false,
-    "standard": false
-  },
   "ruby.specCommand": "bin/rspec",
   "ruby.specSaveFile": true,
-  "ruby.useLanguageServer": true,
   "sass.format.convert": false,
   "scm.diffDecorations": "gutter",
   "scss.validate": false,
   "search.exclude": {
+    ".yarn/releases": true,
     "**/build/contracts/**": true,
     "**/deps/": true,
     "**/index.android.bundle": true
@@ -216,7 +158,6 @@
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "open",
   "solargraph.autoformat": true,
-  "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
@@ -234,11 +175,7 @@
   "terminal.integrated.lineHeight": 1.2,
   "typescript.format.enable": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vscodeWorkspaceSwitcher.paths": [
-    "~/work/*",
-    "~/beam/*",
-    "~/projects/*"
-  ],
+  "vscodeWorkspaceSwitcher.paths": ["~/work/*", "~/beam/*", "~/projects/*"],
   "vscodeWorkspaceSwitcher.showInExplorer": false,
   "vscodeWorkspaceSwitcher.showTreeView": false,
   "vsicons.dontShowNewVersionMessage": true,
@@ -249,9 +186,8 @@
     "statusBar.noFolderBackground": "#212121",
     "statusBar.debuggingBackground": "#263238",
     "tab.activeBorder": "#ff0a7c",
-    "tab.activeBackground": "#ff0a7c0a",
+    "tab.activeBackground": "#ff0a7c0a"
   },
-  "workbench.colorTheme": "Tomorrow_Night_Eighties",
   "workbench.editor.labelFormat": "short",
   "workbench.editor.limit.enabled": true,
   "workbench.iconTheme": "vscode-icons",
@@ -276,17 +212,42 @@
   "gitlens.views.showRelativeDateMarkers": false,
   "gitlens.views.commits.avatars": false,
   "gitlens.views.commits.showBranchComparison": false,
-  "rubyTestExplorer.logpanel": true,
-  "rubyTestExplorer.rspecCommand": "bin/rspec",
-  "rubyTestExplorer.testFramework": "rspec",
-  "testExplorer.hideWhen": "noAdapters",
-  "testExplorer.addToEditorContextMenu": true,
-  "testExplorer.useNativeTesting": true,
   "workbench.commandPalette.preserveInput": true,
   "gitlens.gitCommands.sortBy": "name",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "scm.repositories.visible": 1,
   "githubPullRequests.pullBranch": "never",
   "notebook.output.textLineLimit": 90,
-  "gitlens.mode.active": "zen"
+  "python.defaultInterpreterPath": "/Users/martin/.local/share/virtualenvs/embedding_extractor-s0Qj4iay",
+  "gitlens.mode.active": "zen",
+  "editor.guides.bracketPairs": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vue.inlayHints.optionsWrapper": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "‘": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vscode-erb-beautify.keepBlankLines": 1,
+  "erb-formatter.commandPath": "erb-format",
+  "erb-formatter.lineLength": "100",
+  "workbench.colorTheme": "Default Dark Modern",
+  "nightswitch.themeNight": "Default Dark Modern",
+  "nightswitch.themeDay": "Default Light Modern",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.quickSuggestionsDelay": 100,
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp"
+  },
+  "rubyLsp.enableExperimentalFeatures": true,
+  "solargraph.completion": false,
+  "solargraph.symbols": false,
+  "nightswitch.disableAutoSwitchNotifications": true,
+  "nightswitch.sunset": "8:00 PM"
 }
