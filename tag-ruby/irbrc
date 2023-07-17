@@ -2,11 +2,16 @@ require "rubygems"
 require "pp"
 require "irb/completion"
 require "irb/ext/save-history"
-require "amazing_print"
+
+begin
+  require "amazing_print"
+  AmazingPrint.irb!
+rescue LoadError
+end
 
 # require "irbtools"
 # require "irbtools/more"
-AmazingPrint.irb!
+
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:SAVE_HISTORY] = 1000

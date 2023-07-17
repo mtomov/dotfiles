@@ -20,17 +20,19 @@
   ci = commit -v
   co = checkout
   r = rebase -i origin/main
+  rb = !git fetch && git rebase origin/main
   cp = cherry-pick
   br = branch
+  cpcont = cherry-pick --continue
   cont = rebase --continue
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   pr = !gh pull-request
   st = stash
-  up = rebase -i origin/main
+  up = !git fetch && git rebase origin/main
   to-staging = !git co staging && git merge - -Xtheirs && git checkout -
   to-staging-and-deploy = !git co staging && git merge - -Xtheirs && git push && git checkout - && bundle exec cap staging deploy
   slog = log --no-merges --pretty=format:\"%h  %Cblue%<(15)%an%Creset %Cgreen%s%Creset\"
-  l = log main.. --reverse --format="%B%n---%n"
+  l = log origin/main.. --reverse --format="%B%n---%n"
   cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -n 1 git branch -d"
 	cb = rev-parse --abbrev-ref HEAD # Print the current branch name
   spike = "!git checkout -b $(git cb)-spike; git checkout -"
