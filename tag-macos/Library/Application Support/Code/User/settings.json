@@ -27,7 +27,7 @@
   "breadcrumbs.enabled": true,
   "css.customData": [".vscode/css_custom_data.json"],
   "diffEditor.renderSideBySide": false,
-  "editor.acceptSuggestionOnEnter": "on",
+  "editor.acceptSuggestionOnEnter": "smart",
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "Hasklig, Inconsolata, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
@@ -35,7 +35,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 2,
@@ -43,7 +42,6 @@
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderLineHighlight": "gutter",
   "editor.suggest.localityBonus": true,
-  "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -61,7 +59,6 @@
     "erb": "html"
   },
   "emmet.showAbbreviationSuggestions": false,
-  "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
   "emojisense.emojiDecoratorsEnabled": true,
   "emojisense.languages": {
@@ -125,6 +122,21 @@
   "javascript.validate.enable": false,
   "multiCommand.commands": [
     {
+      "command": "multiCommand.sameKeyValue",
+      "sequence": [
+        "cursorWordLeftSelect",
+        "editor.action.clipboardCopyAction",
+        "cursorRight",
+        {
+          "args": {
+            "snippet": ": $CLIPBOARD, $0"
+          },
+          "command": "editor.action.insertSnippet"
+        }
+      ],
+      "languages": ["ruby"]
+    },
+    {
       "command": "multiCommand.debug",
       "sequence": [
         "editor.action.clipboardCopyAction",
@@ -135,7 +147,22 @@
           },
           "command": "editor.action.insertSnippet"
         }
-      ]
+      ],
+      "languages": ["ruby"]
+    },
+    {
+      "command": "multiCommand.let",
+      "sequence": [
+        "editor.action.clipboardCopyAction",
+        "editor.action.insertLineBefore",
+        {
+          "args": {
+            "snippet": "let(:$CLIPBOARD) { $0 }"
+          },
+          "command": "editor.action.insertSnippet"
+        }
+      ],
+      "languages": ["ruby"]
     }
   ],
   "prettier.requireConfig": true,
@@ -179,15 +206,15 @@
   "vscodeWorkspaceSwitcher.showInExplorer": false,
   "vscodeWorkspaceSwitcher.showTreeView": false,
   "vsicons.dontShowNewVersionMessage": true,
-  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
-  "window.titleBarStyle": "custom",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#1A1A1A",
-    "statusBar.noFolderBackground": "#212121",
-    "statusBar.debuggingBackground": "#263238",
-    "tab.activeBorder": "#ff0a7c",
-    "tab.activeBackground": "#ff0a7c0a"
-  },
+  // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
+  // "window.titleBarStyle": "custom",
+  // "workbench.colorCustomizations": {
+  // "statusBar.background": "#1A1A1A"
+  // "statusBar.noFolderBackground": "#212121"
+  // "statusBar.debuggingBackground": "#263238",
+  // "tab.activeBorder": "#ff0a7c",
+  // "tab.activeBackground": "#ff0a7c0a"
+  // },
   "workbench.editor.labelFormat": "short",
   "workbench.editor.limit.enabled": true,
   "workbench.iconTheme": "vscode-icons",
@@ -196,10 +223,11 @@
   "yaml.format.enable": false,
   "gitlens.statusBar.enabled": false,
   "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
+    "*": false,
     "plaintext": false,
     "markdown": false,
+    "scminput": false,
+    "yaml": false,
     "ruby": true,
     "haml": false,
     "jsonc": true,
@@ -234,20 +262,28 @@
   "vscode-erb-beautify.keepBlankLines": 1,
   "erb-formatter.commandPath": "erb-format",
   "erb-formatter.lineLength": "100",
-  "workbench.colorTheme": "Default Dark Modern",
   "nightswitch.themeNight": "Default Dark Modern",
   "nightswitch.themeDay": "Default Light Modern",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.inlineSuggest.suppressSuggestions": true,
-  "editor.quickSuggestionsDelay": 100,
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp"
   },
   "rubyLsp.enableExperimentalFeatures": true,
   "solargraph.completion": false,
   "solargraph.symbols": false,
+  // "nightswitch.disableAutoSwitchNotifications": true,
+  "nightswitch.sunset": "8:00 PM",
+  "nightswitch.location": "51,0",
+  "diffEditor.experimental.useVersion2": true,
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "workbench.colorTheme": "Default Dark Modern",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.accessibilitySupport": "off",
   "nightswitch.disableAutoSwitchNotifications": true,
-  "nightswitch.sunset": "8:00 PM"
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

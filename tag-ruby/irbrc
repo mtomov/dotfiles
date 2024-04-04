@@ -1,7 +1,4 @@
-require "rubygems"
-require "pp"
 require "irb/completion"
-require "irb/ext/save-history"
 
 begin
   require "amazing_print"
@@ -9,15 +6,12 @@ begin
 rescue LoadError
 end
 
-# require "irbtools"
-# require "irbtools/more"
-
-
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "~/.irb_history"
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:ECHO_ON_ASSIGNMENT] = true
+IRB.conf[:USE_READLINE] = true
 
 def require_rb_files_from(dir)
   Dir.glob(File.join(dir, "*.rb")) do |file|
@@ -60,5 +54,23 @@ if (ENV["RAILS_ENV"] || defined? Rails) && File.exist?(railsrc_path)
     load railsrc_path
   rescue Exception
     warn "Could not load: #{railsrc_path} because of #{$!.message}"
+  end
+end
+
+# Core extensions
+class Array
+  def self.toy
+    [1, 2, 3] + %w(a b c)
+  end
+end
+
+class Hash
+  def self.toy
+    {
+      1 => 2,
+      'a' => 'b',
+      'foo' => 'bar',
+      :hello => 'there'
+    }
   end
 end

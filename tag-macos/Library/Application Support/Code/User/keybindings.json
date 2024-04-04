@@ -169,10 +169,6 @@
     "args": "Commit verbose"
   },
   {
-    "key": "ctrl+tab",
-    "command": "workbench.action.terminal.focusNext"
-  },
-  {
     "key": "f2",
     "command": "workbench.view.search",
     "when": "!filesExplorerFocus && inputFocus"
@@ -231,6 +227,16 @@
   {
     "key": "ctrl+shift+q",
     "command": "multiCommand.debug",
+    "when": "editorLangId == ruby"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "multiCommand.let",
+    "when": "editorLangId == ruby"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "multiCommand.sameKeyValue",
     "when": "editorLangId == ruby"
   },
   {
@@ -377,11 +383,6 @@
   },
   {
     "key": "ctrl+/",
-    "command": "editor.action.commentLine",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+/",
     "command": "-workbench.action.terminal.sendSequence",
     "when": "terminalFocus"
   },
@@ -393,10 +394,6 @@
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen"
-  },
-  {
-    "key": "ctrl+shift+f",
-    "command": "workbench.action.findInFiles"
   },
   {
     "key": "ctrl+shift+q",
@@ -722,17 +719,57 @@
     "when": "editorTextFocus && editorLangId == 'erb'"
   },
   {
-    "key": "ctrl+\\",
-    "command": "editor.action.inlineSuggest.trigger",
-    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
-  },
-  {
-    "key": "alt+\\",
-    "command": "-editor.action.inlineSuggest.trigger",
-    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
-  },
-  {
     "key": "cmd+k cmd+t",
     "command": "workbench.action.tasks.reRunTask"
+  },
+  {
+    "key": "alt+i",
+    "command": "-navigateRailsFiles.openRbFile"
+  },
+  {
+    "key": "ctrl+shift+.",
+    "command": "navigateRailsFiles.openRbFile"
+  },
+  {
+    "key": "ctrl+shift+cmd+.",
+    "command": "navigateRailsFiles.changeToAppHtmlFile"
+  },
+  {
+    "key": "alt+o",
+    "command": "-navigateRailsFiles.changeToAppHtmlFile"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-emojisense.quickEmojitext",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-emojisense.quickEmojitextTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-emojisense.quickEmoji",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-emojisense.quickEmojiTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.openPreviousRecentlyUsedEditor",
+    "when": "!inEditorsPicker"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.openNextRecentlyUsedEditor",
+    "when": "!inEditorsPicker"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "-solargraph.search"
   }
 ]

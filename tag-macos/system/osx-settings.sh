@@ -77,9 +77,6 @@ defaults write com.apple.BezelServices kDimTime -int 300
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Finder: Always open everything in list view
-defaults write com.apple.Finder FXPreferredViewStyle clmv
-
 # Show remaining battery percentage (can't show time in recent macOS versions)
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
