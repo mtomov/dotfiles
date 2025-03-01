@@ -75,19 +75,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(fzf)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 #
 # User configuration
-# modify the prompt to contain git branch name if applicable
-# git_prompt_info() {
-#   ref=$(git symbolic-ref HEAD 2> /dev/null)
-#   if [[ -n $ref ]]; then
-#     echo "%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%} "
-#   fi
-# }
-# setopt promptsubst
-# export PS1="${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# "
 
 # source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 
@@ -96,6 +87,9 @@ source $ZSH/oh-my-zsh.sh
 # zstyle ':autocomplete:*' min-input 0
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion-scripts/git-completion.bash
 fpath=($HOME/.zsh/completion-scripts $fpath)
+
+# Add zsh completions directory to fpath
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 # Colorful lists of possible autocompletions for `ls`
 # zstyle doesn't understand the BSD-style $LSCOLORS at all, so use Linux-style
@@ -253,7 +247,12 @@ export PATH=".git/safe/../../bin:$PATH"
 # fnm
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
-export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
-export PATH=/Users/martin/Library/Python/3.10/bin:$PATH
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+# export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
+# export PATH=/Users/martin/Library/Python/3.10/bin:$PATH
+# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc

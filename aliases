@@ -45,6 +45,10 @@ alias dl="docker-compose logs -f --tail=50"
 # alias du="docker-compose up -d"
 alias ds="docker-compose stop"
 
+alias python='python3'
+alias pip='pip3'
+alias activate='source ./.venv/bin/activate'
+
 function de() {
   docker exec -ti $1 bash
 }

@@ -7,7 +7,7 @@
 [push]
   default = current
 [core]
-  editor = code --wait
+  editor = cursor --wait
   excludesfile = ~/.gitignore
   pager = less -FRX
 [color]
@@ -16,7 +16,7 @@
   aa = add --all
   ap = add --patch
   c = commit --verbose
-  ca = commit --amend
+  ca = commit --amend --no-edit
   ci = commit -v
   co = checkout
   r = rebase -i origin/main
@@ -33,7 +33,7 @@
   to-staging-and-deploy = !git co staging && git merge - -Xtheirs && git push && git checkout - && bundle exec cap staging deploy
   slog = log --no-merges --pretty=format:\"%h  %Cblue%<(15)%an%Creset %Cgreen%s%Creset\"
   l = log origin/main.. --reverse --format="%B%n---%n"
-  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -n 1 git branch -d"
+	cleanup = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 	cb = rev-parse --abbrev-ref HEAD # Print the current branch name
   spike = "!git checkout -b $(git cb)-spike; git checkout -"
   origin-head = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
