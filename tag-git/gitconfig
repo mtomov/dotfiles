@@ -62,13 +62,13 @@
 	maxrecentrepo = 5
 	gcwarning = false
 [merge]
-  tool = code
-[mergetool "code"]
-  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  tool = cursor
+[mergetool "cursor"]
+  cmd = cursor --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [diff]
-  tool = code
-[difftool "vscode"]
-  cmd = code -n --wait --diff $LOCAL $REMOTE
+  tool = cursor
+[difftool "vscursor"]
+  cmd = cursor -n --wait --diff $LOCAL $REMOTE
 [pager]
 	branch = false
 [submodule]

@@ -132,10 +132,6 @@
     "command": "-extension.runFileSpecs"
   },
   {
-    "key": "ctrl+k ctrl+q",
-    "command": "-workbench.action.navigateToLastEditLocation"
-  },
-  {
     "key": "ctrl+k f12",
     "command": "-editor.action.revealDefinitionAside",
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
@@ -158,11 +154,6 @@
   {
     "key": "ctrl+shift+q",
     "command": "multiCommand.debug",
-    "when": "editorLangId == ruby"
-  },
-  {
-    "key": "ctrl+shift+l",
-    "command": "multiCommand.let",
     "when": "editorLangId == ruby"
   },
   {
@@ -310,10 +301,6 @@
     "command": "workbench.action.focusPreviousGroup"
   },
   {
-    "key": "cmd+y",
-    "command": "redo"
-  },
-  {
     "key": "shift+cmd+t",
     "command": "-extension.goToSpec",
     "when": "editorTextFocus"
@@ -352,7 +339,6 @@
     "command": "git.undoCommit",
     "when": "!isInDiffEditor"
   },
-
   {
     "key": "cmd+g cmd+p",
     "command": "git.push"
@@ -365,17 +351,11 @@
     "key": "cmd+k cmd+a",
     "command": "git.commitStagedAmend"
   },
-
-  {
-    "key": "cmd+g cmd+d",
-    "command": "git.deleteBranch"
-  },
   {
     "key": "cmd+g cmd+s",
     "command": "git.stage",
     "when": "!editorHasSelection"
   },
-
   {
     "key": "ctrl+shift+3",
     "command": "workbench.action.moveEditorToBelowGroup"
@@ -384,7 +364,6 @@
     "key": "ctrl+shift+4",
     "command": "workbench.action.moveEditorToAboveGroup"
   },
-
   {
     "key": "alt+cmd+p",
     "command": "workbench.action.showEditorsInActiveGroup"
@@ -504,7 +483,6 @@
     "command": "-erb.toggleTags",
     "when": "editorTextFocus && editorLangId == 'erb'"
   },
-
   {
     "key": "alt+i",
     "command": "-navigateRailsFiles.openRbFile"
@@ -551,7 +529,6 @@
     "command": "workbench.action.openNextRecentlyUsedEditor",
     "when": "!inEditorsPicker"
   },
-
   {
     "key": "shift+cmd+t",
     "command": "tailwindCSS.sortSelection",
@@ -584,10 +561,6 @@
     "command": "workbench.action.toggleAuxiliaryBar"
   },
   {
-    "key": "cmd+t",
-    "command": "workbench.action.togglePanel"
-  },
-  {
     "key": "f7",
     "command": "workbench.action.debug.stepInto",
     "when": "debugState != 'inactive'"
@@ -617,10 +590,6 @@
     "command": "gitlens.openFileOnRemote"
   },
   {
-    "key": "shift+alt+c",
-    "command": "gitlens.copyRemoteFileUrlWithoutRange"
-  },
-  {
     "key": "cmd+k p",
     "command": "-workbench.action.files.copyPathOfActiveFile"
   },
@@ -639,5 +608,76 @@
   {
     "key": "alt+cmd+t",
     "command": "-workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "cmd+k cmd+q",
+    "command": "-workbench.action.navigateToLastEditLocation"
+  },
+  {
+    "key": "shift+alt+c",
+    "command": "gitlens.copyRemoteFileUrlToClipboard"
+  },
+  {
+    "key": "cmd+y",
+    "command": "redo"
+  },
+  {
+    "key": "cmd+k cmd+e",
+    "command": "workbench.action.terminal.moveToEditor"
+  },
+  {
+    "key": "ctrl+cmd+right",
+    "command": "editor.action.inlineSuggest.acceptNextWord",
+    "when": "cppSuggestion && !editorReadonly || inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "cmd+right",
+    "command": "-editor.action.inlineSuggest.acceptNextWord",
+    "when": "cppSuggestion && !editorReadonly || inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "linear-open-issue.openIssue"
+  },
+  {
+    "key": "cmd+g cmd+d",
+    "command": "git.clean"
+  },
+  {
+    "key": "cmd+g cmd+o",
+    "command": "gitlens.views.continuePausedOperation"
+  },
+  {
+    "key": "cmd+k p",
+    "command": "workbench.action.pinEditor",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "key": "cmd+k shift+enter",
+    "command": "-workbench.action.pinEditor",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "key": "alt+cmd+r",
+    "command": "-toggleFindRegex",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-composer.showBackgroundAgentHistory",
+    "when": "backgroundComposerEnabled || showBackgroundAgentHistoryAction"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal"
   }
 ]

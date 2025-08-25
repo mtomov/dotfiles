@@ -6,7 +6,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[erb]": {
-    "editor.defaultFormatter": "elia.erb-formatter",
     "editor.autoClosingBrackets": "never"
   },
   "[markdown]": {
@@ -55,9 +54,6 @@
   },
   "editor.wordWrap": "on",
   "emmet.excludeLanguages": ["markdown", "typescript", "typescriptreact"],
-  "emmet.includeLanguages": {
-    "erb": "html"
-  },
   "emmet.showAbbreviationSuggestions": false,
   "emmet.triggerExpansionOnTab": true,
   "emojisense.emojiDecoratorsEnabled": true,
@@ -75,11 +71,11 @@
   "files.associations": {
     "*.casks": "ruby",
     "*.config": "yaml",
-    "*.erb": "erb",
     ".aliases": "shellscript",
     ".irbrc_rails": "ruby",
     ".xbindkeysrc": "shellscript",
-    "pre-push": "shellscript"
+    "pre-push": "shellscript",
+    "*.css": "tailwindcss"
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -165,7 +161,6 @@
       "languages": ["ruby"]
     }
   ],
-  "prettier.requireConfig": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "redhat.telemetry.enabled": false,
@@ -184,62 +179,33 @@
   "search.smartCase": true,
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "solargraph.autoformat": true,
-  "solargraph.formatting": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
     "slim": "html",
-    "slim.html": "html"
+    "ruby": "html"
   },
-  "telemetry.telemetryLevel": "off",
   "terminal.integrated.commandsToSkipShell": [
     "extension.runLastSpec",
     "workbench.action.toggleSidebarVisibility"
   ],
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontSize": 13,
-  "terminal.integrated.lineHeight": 1.2,
   "typescript.format.enable": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vscodeWorkspaceSwitcher.paths": ["~/work/*", "~/beam/*", "~/projects/*"],
   "vscodeWorkspaceSwitcher.showInExplorer": false,
   "vscodeWorkspaceSwitcher.showTreeView": false,
   "vsicons.dontShowNewVersionMessage": true,
-  // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
-  // "window.titleBarStyle": "custom",
-  // "workbench.colorCustomizations": {
-  // "statusBar.background": "#1A1A1A"
-  // "statusBar.noFolderBackground": "#212121"
-  // "statusBar.debuggingBackground": "#263238",
-  // "tab.activeBorder": "#ff0a7c",
-  // "tab.activeBackground": "#ff0a7c0a"
-  // },
   "workbench.editor.labelFormat": "short",
   "workbench.editor.limit.enabled": true,
   "workbench.iconTheme": "vscode-icons",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "newUntitledFile",
   "yaml.format.enable": false,
   "gitlens.statusBar.enabled": false,
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "yaml": false,
-    "ruby": true,
-    "haml": false,
-    "jsonc": true,
-    "git-commit": false,
-    "slim": false
-  },
   "workbench.editor.revealIfOpen": true,
   "explorer.autoReveal": "focusNoScroll",
   "workbench.editor.scrollToSwitchTabs": true,
   "gitlens.views.showRelativeDateMarkers": false,
-  "gitlens.views.commits.avatars": false,
-  "gitlens.views.commits.showBranchComparison": false,
   "workbench.commandPalette.preserveInput": true,
   "gitlens.gitCommands.sortBy": "name",
   "terminal.integrated.enableMultiLinePasteWarning": false,
@@ -247,7 +213,6 @@
   "githubPullRequests.pullBranch": "never",
   "notebook.output.textLineLimit": 90,
   "python.defaultInterpreterPath": "/Users/martin/.local/share/virtualenvs/embedding_extractor-s0Qj4iay",
-  "gitlens.mode.active": "zen",
   "editor.guides.bracketPairs": true,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -259,9 +224,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vscode-erb-beautify.keepBlankLines": 1,
-  "erb-formatter.commandPath": "erb-format",
-  "erb-formatter.lineLength": "100",
   "nightswitch.themeNight": "Default Dark Modern",
   "nightswitch.themeDay": "Default Light Modern",
   "[jsonc]": {
@@ -270,20 +232,113 @@
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp"
   },
-  "rubyLsp.enableExperimentalFeatures": true,
-  "solargraph.completion": false,
-  "solargraph.symbols": false,
-  // "nightswitch.disableAutoSwitchNotifications": true,
-  "nightswitch.sunset": "8:00 PM",
+  "nightswitch.sunset": "7:00 PM",
+  "nightswitch.sunrise": "8:00 AM",
   "nightswitch.location": "51,0",
   "diffEditor.experimental.useVersion2": true,
   "editor.snippetSuggestions": "top",
   "editor.suggest.snippetsPreventQuickSuggestions": true,
-  "workbench.colorTheme": "Default Dark Modern",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.accessibilitySupport": "off",
-  "nightswitch.disableAutoSwitchNotifications": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "nightswitch.disableAutoSwitchNotifications": true,
+  "tailwindCSS.experimental.classRegex": [
+    "\\bclass:\\s*'([^']*)'",
+    "\\bclass:\\s*\"([^\"]*)\""
+  ],
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "git.confirmSync": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": "on"
+  },
+  "editor.suggest.showWords": false,
+  "editor.suggest.showSnippets": false,
+  "editor.suggest.showVariables": false,
+  "editor.suggest.showFunctions": false,
+  "editor.suggest.showMethods": false,
+  "editor.suggest.showClasses": false,
+  "editor.suggest.showStructs": false,
+  "editor.suggest.showInterfaces": false,
+  "editor.suggest.showModules": false,
+  "editor.suggest.showProperties": true,
+  "editor.suggest.showEvents": false,
+  "editor.suggest.showOperators": false,
+  "editor.suggest.showUnits": false,
+  "editor.suggest.showValues": false,
+  "editor.suggest.showConstants": true,
+  "editor.suggest.showEnums": true,
+  "editor.suggest.showEnumMembers": true,
+  "editor.suggest.showKeywords": false,
+  "editor.suggest.showColors": true,
+  "editor.suggest.showFiles": false,
+  "editor.suggest.showReferences": false,
+  "editor.suggest.showFolders": true,
+  "editor.suggest.showTypeParameters": false,
+  "editor.suggest.showUsers": false,
+  "editor.suggest.showIssues": false,
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Menlo",
+  "chat.editing.alwaysSaveWithGeneratedChanges": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "terminal.integrated.fontWeightBold": "bold",
+  "gitlens.home.preview.enabled": false,
+  "gitlens.views.stashes.files.layout": "list",
+  "cursor.cpp.disabledLanguages": ["scminput", "haml", "slim"],
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.composer.renderPillsInsteadOfBlocks": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "cursor.cmdk.useThemedDiffBackground": true,
+  "gitlens.views.scm.grouped.views": {
+    "commits": false,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true,
+    "contributors": true,
+    "repositories": false,
+    "searchAndCompare": false,
+    "launchpad": false
+  },
+  "[mjml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "rubyLsp.enabledFeatures": {
+    "codeActions": true,
+    "diagnostics": true,
+    "documentHighlights": true,
+    "documentLink": true,
+    "documentSymbols": true,
+    "foldingRanges": true,
+    "formatting": true,
+    "hover": true,
+    "inlayHint": true,
+    "onTypeFormatting": true,
+    "selectionRanges": true,
+    "semanticHighlighting": true,
+    "completion": true,
+    "codeLens": true,
+    "definition": true,
+    "workspaceSymbol": true,
+    "signatureHelp": true,
+    "typeHierarchy": true
+  },
+  "githubPullRequests.pushBranch": "always",
+  "workbench.panel.showLabels": false,
+  "cursor.composer.shouldAllowCustomModes": true,
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "stash-push:command",
+    "switch:command"
+  ],
+  "workbench.colorTheme": "Default Dark Modern",
+  "cursor.composer.textSizeScale": 1.15,
+  "composerWeb.customKeybindings": []
+  // "tailwindCSS.experimental.configFile": "beamai/config/tailwind.config.js"
 }

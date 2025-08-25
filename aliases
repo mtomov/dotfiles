@@ -9,6 +9,7 @@ alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
+alias code='cursor'
 
 alias free="free -m"
 # alias open=xdg-open
@@ -29,15 +30,21 @@ alias b="bundle"
 
 # Rails
 alias redo="rails db:redo"
-alias m="rails db:migrate"
-alias r="bin/rails r"
+alias r="bin/rails"
 alias s="bin/rails s"
 alias c="bin/rails c"
+alias dm="bin/rails db:migrate"
+alias dmd="bin/rails db:migrate:with_data"
+alias dr="bin/rails db:rollback"
+alias gresetschema="git checkout -- db/schema.rb"
+alias dredo="bin/rails db:migrate:redo"
+alias dr2="bin/rails db:rollback STEP=2"
+alias dr3="bin/rails db:rollback STEP=3"
 alias d="bin/dev"
 alias o="overmind start -f Procfile.dev --processes css,js"
 alias dev="bin/dev"
 alias w="bin/web"
-alias cap='bundle exec cap'
+alias cap='bundle exec cap production'
 alias aw='tail -f -n200 log/awesome.log'
 
 # Docker
@@ -63,5 +70,5 @@ function docker-remove() {
 }
 
 function convert_video_from_mov_to_webm() {
-  ffmpeg -y -i ~/Pictures/screenshots/Screen* ~/Pictures/screenshots/out.webm && rm -f ~/Pictures/screenshots/Screen*
+  ffmpeg -y -i ~/Pictures/screenshots/Screen*.mov ~/Pictures/screenshots/out.webm && rm -f ~/Pictures/screenshots/Screen*.mov
 }

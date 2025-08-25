@@ -16,10 +16,13 @@ def fuser(email)
   User.find_by(email: email)
 end
 
-# M = Email::Message
-# A = Email::Address
-if defined?(Renalware)
-  R = Renalware
+if defined?(Variant)
+  V = Variant
+  P = Product
+  M = Message
+  C = Classification
+  Co = Conversation
+  A = Account
 end
 
 # set a nice prompt

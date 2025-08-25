@@ -55,3 +55,6 @@ brew "starship"
 
 # Git Large File Support
 brew "git-lfs"
+
+# Shell history
+brew "atuin"

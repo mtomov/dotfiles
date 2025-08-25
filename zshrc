@@ -154,7 +154,7 @@ export PATH="$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nano'
 else
-  export EDITOR='code --wait'
+  export EDITOR='cursor --wait'
 fi
 
 # ssh
@@ -166,7 +166,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="code ~/.zshrc"
+alias zshconfig="cursor ~/.zshrc"
 
 # Custom exports
 # export PGUSER=postgres
