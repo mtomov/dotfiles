@@ -20,7 +20,6 @@ if defined?(Variant)
   V = Variant
   P = Product
   M = Message
-  C = Classification
   Co = Conversation
   A = Account
 end

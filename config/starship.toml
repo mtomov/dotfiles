@@ -72,3 +72,10 @@ detect_folders = ["node_modules"]
 detect_extensions = []
 format = "[($version )]($style)"
 style = "fg:031" # dark blue
+
+# [custom.git_worktree]
+# description = "Displays git worktree directory name"
+# command = "sh -c 'git_dir=$(git rev-parse --git-dir 2>/dev/null) && if echo \"$git_dir\" | grep -q \"/worktrees/\"; then top=$(git rev-parse --show-toplevel 2>/dev/null) && basename \"$top\" 2>/dev/null | tr -d \"\\n\"; fi'"
+# when = "sh -c 'git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git rev-parse --git-dir 2>/dev/null | grep -q \"/worktrees/\"'"
+# format = "[worktree: $output]($style)\n"
+# style = "fg:245"                                                                                                                                                                                                                 # subtle gray

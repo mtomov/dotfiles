@@ -10,3 +10,5 @@ Brewfile*.lock.json
 ssh/id_ecdsa*
 
 tag-karabiner/config/karabiner/automatic_backups/*
+
+.DS_Store

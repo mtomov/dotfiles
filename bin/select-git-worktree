@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Only 1 worktree
+if [ "$(git worktree list | wc -l | xargs echo)" = 1 ]; then
+  echo "select-git-worktree: There's only one git worktree, exiting." >&2
+  exit 1
+fi
+
+current_worktree=$(git rev-parse --show-toplevel)
+
+git worktree list | awk -v cur="${current_worktree}" '$1 != cur' |\
+  fzf --reverse --exit-0 \
+    --preview='echo {} | awk "{print \$1}" | xargs -I@ sh -c "git -C @ log --oneline -5 2>/dev/null || true"' |\
+  awk '{ print $1 }'

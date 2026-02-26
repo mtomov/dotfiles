@@ -19,11 +19,18 @@
   ca = commit --amend --no-edit
   ci = commit -v
   co = checkout
+  co-b = "!sh -c 'if [ \"$1\" = \"-b\" ]; then branch_name=$(echo \"$2\" | tr \"[:upper:]\" \"[:lower:]\" | sed \"s/[^a-z0-9]/-/g\" | sed \"s/--*/-/g\" | sed \"s/^-\\|-$//g\"); git checkout -b \"$branch_name\"; else branch_name=$(echo \"$1\" | tr \"[:upper:]\" \"[:lower:]\" | sed \"s/[^a-z0-9]/-/g\" | sed \"s/--*/-/g\" | sed \"s/^-\\|-$//g\"); git checkout \"$branch_name\"; fi' -"
   r = rebase -i origin/main
   rb = !git fetch && git rebase origin/main
   cp = cherry-pick
   br = branch
   cpcont = cherry-pick --continue
+  oldify-branches = "!f() { \
+    for branch in $(git for-each-ref --format='%(refname:short) %(committerdate:iso8601)' refs/heads | \
+      awk -v date=\"$(date -v-2m +%Y-%m-%d)\" '$2 < date {print $1}' | grep -v '^old/'); do \
+      git branch -m \"$branch\" \"old/$branch\"; \
+    done; \
+  }; f"
   cont = rebase --continue
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   pr = !gh pull-request
@@ -33,7 +40,7 @@
   to-staging-and-deploy = !git co staging && git merge - -Xtheirs && git push && git checkout - && bundle exec cap staging deploy
   slog = log --no-merges --pretty=format:\"%h  %Cblue%<(15)%an%Creset %Cgreen%s%Creset\"
   l = log origin/main.. --reverse --format="%B%n---%n"
-	cleanup = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
+	cleanup = !git-cleanup
 	cb = rev-parse --abbrev-ref HEAD # Print the current branch name
   spike = "!git checkout -b $(git cb)-spike; git checkout -"
   origin-head = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
@@ -57,8 +64,8 @@
 
 [gui]
 	tabsize = 2
-	fontui = -family \"Avenir Next\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family Menlo -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Avenir Next\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Menlo -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 	maxrecentrepo = 5
 	gcwarning = false
 [merge]
@@ -87,7 +94,7 @@
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

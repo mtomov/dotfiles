@@ -1,0 +1,66 @@
+#!/bin/bash
+set -o errexit
+
+# ABOUTME: Clean up merged branches and their associated worktrees
+# Updates main branch, prunes stale worktrees, checks for merged branches
+# (via GitHub PRs, git cherry, or empty branches), removes their worktrees, and deletes them
+
+echo "Updating main branch..."
+git checkout -q main && git pull -q origin main
+
+echo "Pruning stale worktrees..."
+git worktree prune
+
+echo "Checking branches for merge status..."
+git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do
+	if [ "$branch" = "main" ]; then continue; fi
+
+	merged=false
+
+	# Check if branch has a merged PR
+	if gh pr list --state merged --head "$branch" --json number --jq '.[0].number' 2>/dev/null | grep -q '.'; then
+		echo "✓ Branch $branch has merged PR"
+		merged=true
+	else
+		# Check if branch is merged using git cherry
+		mergeBase=$(git merge-base main "$branch" 2>/dev/null)
+		if [ -n "$mergeBase" ]; then
+			cherry=$(git cherry main $(git commit-tree $(git rev-parse "$branch"^{tree}) -p "$mergeBase" -m _) 2>/dev/null)
+			if [ -n "$cherry" ] && [[ $cherry == "-"* ]]; then
+				echo "✓ Branch $branch is merged (git cherry)"
+				merged=true
+			fi
+		fi
+
+		# Check if branch has no unique commits (empty branch)
+		if [ "$merged" = "false" ]; then
+			unique_commits=$(git log main.."$branch" --oneline 2>/dev/null | head -1)
+			if [ -z "$unique_commits" ]; then
+				echo "✓ Branch $branch has no unique commits (empty)"
+				merged=true
+			fi
+		fi
+	fi
+
+	if [ "$merged" = "true" ]; then
+		# Find and remove all worktrees associated with this branch
+		git worktree list | awk -v branch="$branch" '
+			$0 ~ "\\[" branch "\\]" { print $1 }
+		' | while read worktree; do
+			if [ -n "$worktree" ]; then
+				echo "  Removing worktree: $worktree"
+				git worktree remove "$worktree" 2>/dev/null || git worktree remove --force "$worktree" 2>/dev/null || true
+			fi
+		done
+
+		# Delete the branch
+		echo "  Deleting branch: $branch"
+		output=$(git branch -D "$branch" 2>&1)
+		if [ $? -ne 0 ]; then
+			echo "  Warning: $output"
+		fi
+	fi
+done
+
+echo "Cleanup complete!"
+

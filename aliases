@@ -4,6 +4,7 @@ alias mkdir='mkdir -p'
 alias ...='../..'
 alias ls='ls --color=auto'
 alias ll='ls -alh'
+alias ll='ls -alht'
 alias lh='ls -Alh'
 alias -g G='| grep'
 alias -g M='| less'
@@ -22,7 +23,6 @@ alias di='dirs -v | head -10'
 # Git
 alias p='git pull'
 alias gui='git gui'
-alias l='lazygit'
 
 # Bundler
 alias b="bundle"

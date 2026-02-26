@@ -142,16 +142,6 @@
     "when": "terminalFocus"
   },
   {
-    "key": "f9",
-    "command": "editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-  },
-  {
-    "key": "f12",
-    "command": "-editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-  },
-  {
     "key": "ctrl+shift+q",
     "command": "multiCommand.debug",
     "when": "editorLangId == ruby"
@@ -602,7 +592,7 @@
     "command": "pr.pushAndCreate"
   },
   {
-    "key": "cmd+k q",
+    "key": "cmd+k cmd+q",
     "command": "workbench.action.closeOtherEditors"
   },
   {
@@ -644,11 +634,7 @@
     "command": "git.clean"
   },
   {
-    "key": "cmd+g cmd+o",
-    "command": "gitlens.views.continuePausedOperation"
-  },
-  {
-    "key": "cmd+k p",
+    "key": "cmd+k cmd+p",
     "command": "workbench.action.pinEditor",
     "when": "!activeEditorIsPinned"
   },
@@ -673,11 +659,83 @@
     "when": "terminal.active"
   },
   {
+    "key": "ctrl+down",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "cursor.composer.openAgentWindow",
+    "when": "cursor.appLayoutEnabled && editorFocus && cursor.appLayout != 'agent'"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.composer.openAgentWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout != 'agent'"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "cursor.composer.openEditorWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout == 'agent'"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.composer.openEditorWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout == 'agent'"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-cursorLineEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+g cmd+o",
+    "command": "pr.openPullRequestOnGitHub"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "explorerViewletVisible"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+w",
+    "command": "git.openWorktreeInNewWindow"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "workbench.action.maximizeChatSize",
+    "when": "cursor.agentIdeUnification.enabled"
+  },
+  {
+    "key": "alt+cmd+e",
+    "command": "-workbench.action.maximizeChatSize",
+    "when": "cursor.agentIdeUnification.enabled"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
     "key": "ctrl+`",
     "command": "workbench.action.togglePanel"
   },
   {
-    "key": "ctrl+`",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "key": "shift+cmd+right",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+left",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "workbench.action.toggleUnifiedSidebar",
+    "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
+  },
+  {
+    "key": "alt+cmd+s",
+    "command": "-workbench.action.toggleUnifiedSidebar",
+    "when": "cursor.agentIdeUnification.enabled && !isAuxiliaryWindowFocusedContext"
   }
 ]
