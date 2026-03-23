@@ -64,11 +64,6 @@ if ! echo "$SHELL" | grep -Fq zsh; then
   chsh -s /bin/zsh
 fi
 
-# Install Oh My ZSH
-if [ ! -d ~/.oh-my-zsh ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
 info "Linking dotfiles into ~..."
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 export RCRC=tag-macos/rcrc
@@ -82,14 +77,7 @@ stay_awake_while ./tag-macos/system/terminal-settings.sh
 
 
 
-info "Running all setup scripts..."
-for setup in tag-*/setup vscode/setup; do
-  dir=$(basename "$(dirname "$setup")")
-  info "Running setup for ${dir#tag-}..."
-  . "$setup"
-done
-
-mkdir -p ~/code/work
+mkdir -p ~/code
 # mkdir -p ~/code/personal
 
 green "== Success!"

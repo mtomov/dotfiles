@@ -4,84 +4,6 @@ printf '\33c\e[3J'
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf)
-
-# source $ZSH/oh-my-zsh.sh
-
-#
-# User configuration
-
-# source "$ZSH/themes/$ZSH_THEME.zsh-theme"
-
 # load our own completion functions
 
 # zstyle ':autocomplete:*' min-input 0
@@ -143,10 +65,11 @@ bindkey "^[[1;5D" backward-word
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
 [[ -f ~/.projects ]] && source ~/.projects
 
 
-export PATH="$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
+export PATH="$HOME/bin:$HOME/code/tools/bin/:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -171,21 +94,12 @@ alias zshconfig="cursor ~/.zshrc"
 # Custom exports
 # export PGUSER=postgres
 
-# for QHD display
-# if [[ -z `xrandr | grep 2560x1440R` ]]
-# then
-#     xrandr --newmode "2560x1440R"  241.50  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
-#     xrandr --addmode HDMI-1-1 2560x1440R
-# fi
-
-# xrandr --output HDMI-1-1 --mode 2560x1440R
 
 # Configure BAT & RIPGREP
 if [[ -r ~/.rgrc ]]; then
   export RIPGREP_CONFIG_PATH=~/.rgrc
 fi
 export BAT_CONFIG_PATH="~/.config/bat/config"
-alias cat=bat
 alias less=bat
 
 # Prompt {{{
@@ -205,48 +119,34 @@ gc(){
   fi
 }
 
+gw(){
+  if [[ $# == 0 ]]; then
+    local path=$(select-git-worktree)
+    if [[ -n "$path" ]]; then
+      cd "$path"
+    fi
+    true
+  else
+    cd "$1"
+  fi
+}
+
+
+
 
 # eval $(ssh-agent -s) &> /dev/null
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 
-# export ANDROID_HOME=$HOME/Programs/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH=$PATH:$HOME/Programs/flutter/bin
-
-eval "$(rbenv init - zsh)"
-
 export PATH=".git/safe/../../bin:$PATH"
 
-# Load pyenv automatically by adding
-# the following to ~/.zshrc:
-
-# export PATH="$HOME/.pyenv/versions/3.7.2/bin:$PATH"
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-# alias python=python3
-# eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
-# export PATH=$PATH:/Users/martin/Library/Python/3.9/bin
-# export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
-
-# export PATH=$PATH:/usr/local/go/bin
-# export PATH=$PATH:$HOME/bin/go/bin
-
-# export GOPATH="$HOME/bin/go/"
 
 #export OAUTH_DEBUG=true
 [ -f "$HOME/bin/kubectl" ] && source <(kubectl completion zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# fnm
-export PATH="$HOME/.fnm:$PATH"
-eval "`fnm env`"
 # export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
 # export PATH=/Users/martin/Library/Python/3.10/bin:$PATH
 # export PATH="/opt/homebrew/opt/curl/bin:$PATH"
@@ -254,5 +154,40 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
-source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
-source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+# mise must run after Homebrew is on PATH (Apple Silicon: /opt/homebrew/bin/mise)
+command -v mise &>/dev/null && eval "$(mise activate zsh)"
+
+# Google Cloud SDK (optional)
+[[ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ]] && source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+[[ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]] && source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+eval "$(atuin init zsh --disable-up-arrow)"
+
+
+
+[[ -f ~/.secrets ]] && source ~/.secrets
+
+export LDFLAGS="-L$(brew --prefix libpq)/lib"
+export CPPFLAGS="-I$(brew --prefix libpq)/include"
+export PKG_CONFIG_PATH="$(brew --prefix libpq)/lib/pkgconfig"
+
+
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# export LD_DEV_SERVER=true
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

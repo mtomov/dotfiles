@@ -3,7 +3,6 @@ alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
 alias ls='ls --color=auto'
-alias ll='ls -alh'
 alias ll='ls -alht'
 alias lh='ls -Alh'
 alias -g G='| grep'
@@ -11,12 +10,8 @@ alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias code='cursor'
-
 alias free="free -m"
 # alias open=xdg-open
-
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
 
 alias di='dirs -v | head -10'
 
