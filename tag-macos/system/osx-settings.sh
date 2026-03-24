@@ -8,7 +8,8 @@
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
+osascript -e 'tell application "System Preferences" to quit' 2>/dev/null
 
 # Ask for the administrator password upfront
 sudo -v
@@ -130,8 +131,8 @@ defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-# Make ⌘ + F focus the search input in iTunes
-defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
+# Make ⌘ + F focus the search input in Music (was iTunes)
+# defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -167,6 +168,12 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Automatically hide
 defaults write com.apple.dock autohide -int 1
+
+# Hide recent apps from Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Minimize windows into their application icon
+defaults write com.apple.dock minimize-to-application -bool true
 
 # remove delay when moving mouse to the bottom
 defaults write com.apple.dock autohide-delay -int 0
@@ -214,6 +221,18 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`, `Nlsv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Don't show external drives or removable media on Desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
+# Screenshot format
+defaults write com.apple.screencapture type -string "png"
+
+# Reduce wallpaper tinting in windows
+defaults write -g AppleReduceDesktopTinting -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
