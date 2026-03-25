@@ -10,7 +10,7 @@ brew "rcm"
 brew "curl"
 
 brew "bat"
-brew "chrome-cli"
+# brew "chrome-cli"
 brew "fzf"
 brew "git"
 brew "graphicsmagick"

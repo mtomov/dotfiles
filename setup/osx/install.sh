@@ -1,9 +1,6 @@
 #!/bin/bash
 # vim: tw=0
 
-# Take inspiration from
-# https://github.com/devm33/dotfiles/tree/master/install
-
 set -eo pipefail
 
 color() {
@@ -14,18 +11,10 @@ color() {
   tput sgr0
 }
 
-# blue = 4
-# magenta = 5
-red(){ color 1 "$*"; }
 green(){ color 2 "$*"; }
-yellow(){ color 3 "$*"; }
 
 info(){
   green "=== $@"
-}
-
-error(){
-  red "!! $@"
 }
 
 stay_awake_while(){
@@ -36,7 +25,7 @@ quietly_brew_bundle(){
   local brewfile=$1
   shift
   local regex='(^Using )|Homebrew Bundle complete|Skipping install of|It is not currently installed|Verifying SHA-256|==> (Downloading|Purging)|Already downloaded:|No SHA-256'
-  stay_awake_while brew bundle --no-lock --file="$brewfile" "$@" | (grep -vE "$regex" || true)
+  stay_awake_while brew bundle --file="$brewfile" "$@" | (grep -vE "$regex" || true)
 }
 
 command_does_not_exist(){
@@ -75,12 +64,6 @@ mkdir -p ~/Pictures/screenshots
 stay_awake_while ./tag-macos/system/osx-settings.sh
 stay_awake_while ./tag-macos/system/terminal-settings.sh
 
-
-
 mkdir -p ~/code
-# mkdir -p ~/code/personal
 
 green "== Success!"
-
-# yellow "== Post-install instructions =="
-# yellow "1. Install Postgres.app manually https://postgresapp.com/downloads.html"
