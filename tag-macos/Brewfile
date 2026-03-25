@@ -91,6 +91,7 @@ brew "neonctl"
 brew "agent-browser"
 brew "mcp-toolbox"
 brew "logdy"
+brew "uv"
 
 # Shopify CLI (requires tap)
 tap "shopify/shopify"
