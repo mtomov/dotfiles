@@ -352,7 +352,7 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Default Light Modern",
   "git-worktree-manager.worktreeCopyPatterns": [
     ".env",
     ".vscode/**",

@@ -61,6 +61,13 @@ rcup
 info "Creating ~/Pictures/screenshots so screenshots can be saved there..."
 mkdir -p ~/Pictures/screenshots
 
+info "Installing global pnpm packages..."
+if command_does_not_exist pnpm; then
+  green "pnpm not found, skipping global packages"
+else
+  xargs pnpm add -g < pnpm-globals.txt
+fi
+
 stay_awake_while ./tag-macos/system/osx-settings.sh
 stay_awake_while ./tag-macos/system/terminal-settings.sh
 
