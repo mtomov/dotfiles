@@ -1,4 +1,4 @@
-DOTFILES_DIRS="$HOME/projects/dotfiles $HOME/projects/dotfiles-private"
+DOTFILES_DIRS="$HOME/code/dotfiles $HOME/code/dotfiles-private"
 EXCLUDES="helpful-tips system README.md Brewfile Brewfile.casks terminal-themes install.sh setup slack-themes fonts cursor-extensions"
 SYMLINK_DIRS="irbrc.d Notes ssh zsh karabiner superpowers"
 TAGS="macos git karabiner ruby"

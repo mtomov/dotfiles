@@ -5,8 +5,8 @@ Martin Tomov' dotfiles for Zsh, Ruby, git, ElementaryOS and MacOS.
 
 ## Installation
 
-    $ git clone https://github.com:mtomov/dotfiles.git ~/projects/dotfiles
-    $ cd ~/projects/dotfiles
+    $ git clone https://github.com:mtomov/dotfiles.git ~/code/dotfiles
+    $ cd ~/code/dotfiles
 
     // On MacOS
     $ ./setup/osx/install.sh
