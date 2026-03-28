@@ -12,13 +12,13 @@ tell application "Terminal"
 	local initialOpenedWindows
 	local windowID
 	set themeName to "Tomorrow Night Custom"
+	set lightThemeName to "Tomorrow Light Custom"
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
-	(* Open the custom theme so that it gets added to the list
-	   of available terminal themes (note: this will open two
-	   additional terminal windows). *)
+	(* Open each .terminal bundle so Terminal registers the profile (extra windows open). *)
 	do shell script "open './tag-macos/terminal-themes/" & themeName & ".terminal'"
-	(* Wait a little bit to ensure that the custom theme is added. *)
+	delay 1
+	do shell script "open './tag-macos/terminal-themes/" & lightThemeName & ".terminal'"
 	delay 1
 	(* Set the custom theme as the default terminal theme. *)
 	set default settings to settings set themeName
