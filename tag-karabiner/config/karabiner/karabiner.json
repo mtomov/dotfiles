@@ -439,7 +439,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "5",
+                                    "key_code": "1",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Supacode.app'" }],
@@ -491,15 +491,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "1",
-                                    "modifiers": { "mandatory": ["left_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Terminal.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "keypad_1",
+                                    "key_code": "5",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Terminal.app'" }],

@@ -6,17 +6,15 @@
 cask "font-iosevka"
 cask "font-inconsolata"
 cask "font-hasklig"
+cask "font-meslo-lg-nerd-font"
 
 # Browsers
 cask "firefox"
-# cask "github"
 
 # Dev tools
 cask "postgres-app"
 cask "karabiner-elements"
 cask "rectangle"
-# cask "vlc"
-# cask "zoom"
 cask "screen-studio"
 cask "docker-desktop"
 cask "handy"

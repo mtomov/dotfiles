@@ -4,4 +4,4 @@
 compile = false
 
 [tools]
-ruby = "latest"
+# ruby managed per-project via .ruby-version

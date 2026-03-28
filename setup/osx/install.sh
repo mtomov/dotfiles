@@ -56,7 +56,7 @@ fi
 info "Linking dotfiles into ~..."
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 export RCRC=tag-macos/rcrc
-rcup
+rcup -f
 
 info "Creating ~/Pictures/screenshots so screenshots can be saved there..."
 mkdir -p ~/Pictures/screenshots

@@ -50,7 +50,7 @@ fi
 info "Linking dotfiles into ~..."
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 export RCRC=tag-elementaryos/rcrc
-rcup -v -d .
+rcup -f -v -d .
 
 info "Refreshing fonts"
 fc-cache -f -v

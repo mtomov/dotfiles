@@ -1,0 +1,7 @@
+theme = light:Monokai Pro Light Sun,dark:Dimmed Monokai
+
+font-family = MesloLGS Nerd Font
+font-size = 18
+cursor-style = bar
+cursor-style-blink = true
+font-thicken = true

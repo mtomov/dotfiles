@@ -59,6 +59,9 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
+# Media/volume keys as default; hold Globe/fn for F1–F12 ("Use F1, F2 as standard function keys" off)
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
+
 # Automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool true
 
@@ -103,15 +106,17 @@ defaults write com.apple.screencapture type -string "png"
 # Keyboard shortcuts                                                           #
 ###############################################################################
 
-# Use F1 to change keyboard layout
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 61 "{ enabled = 1; value = { parameters = (65535, 122, 8388608); type = 'standard'; }; }"
+# Input sources (Keyboard → Keyboard Shortcuts → Input Sources)
+# "Select the previous input source" (^Space): off
 defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 60 "{ enabled = 0; value = { parameters = (32, 49, 262144); type = 'standard'; }; }"
+# "Select next source in Input menu": F1
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 61 "{ enabled = 1; value = { parameters = (65535, 122, 8388608); type = 'standard'; }; }"
 
-# Use Cmd + Shift + 4 to copy screenshot to clipboard
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 31 "{ enabled = 1; value = { parameters = (52, 21, 1179648); type = 'standard'; }; }"
+# Disable "Copy picture of selected area to the clipboard" (⌘⇧⌃4 when re-enabled in Settings)
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 31 "{ enabled = 0; value = { parameters = (52, 21, 1441792); type = 'standard'; }; }"
 
-# Use Cmd + Shift + Ctrl + 4 to save screenshot to file
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 30 "{ enabled = 1; value = { parameters = (52, 21, 1441792); type = 'standard'; }; }"
+# Save picture of selected area as a file (⌘⇧4)
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 30 "{ enabled = 1; value = { parameters = (52, 21, 1179648); type = 'standard'; }; }"
 
 ###############################################################################
 # Dock                                                                         #
