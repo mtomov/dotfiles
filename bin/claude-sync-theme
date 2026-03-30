@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Set Claude Code user settings theme from macOS appearance (light vs dark).
+
+Reads/writes ~/.claude/settings.json (follows symlinks). Uses the same
+AppleInterfaceStyle check as terminal-theme.zsh.
+
+Override theme ids with CLAUDE_SYNC_THEME_LIGHT / CLAUDE_SYNC_THEME_DARK.
+Default pair uses ANSI colors so Ghostty palette= lines apply.
+
+See: https://code.claude.com/docs/en/commands — /theme includes light-ansi, dark-ansi, etc.
+"""
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+
+
+def _macos_is_dark() -> bool:
+    r = subprocess.run(
+        ["defaults", "read", "-g", "AppleInterfaceStyle"],
+        capture_output=True,
+        text=True,
+    )
+    return r.returncode == 0
+
+
+def main() -> int:
+    light = os.environ.get("CLAUDE_SYNC_THEME_LIGHT", "light-ansi")
+    dark = os.environ.get("CLAUDE_SYNC_THEME_DARK", "dark-ansi")
+    want = dark if _macos_is_dark() else light
+
+    raw = os.environ.get("CLAUDE_SETTINGS_JSON", os.path.expanduser("~/.claude/settings.json"))
+    path = os.path.realpath(raw)
+
+    if not os.path.isfile(path):
+        print(f"claude-sync-theme: missing {path}", file=sys.stderr)
+        return 1
+
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+
+    if data.get("theme") == want:
+        return 0
+
+    data["theme"] = want
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+        f.write("\n")
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

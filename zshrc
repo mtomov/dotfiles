@@ -25,7 +25,7 @@ compinit
 
 # load custom executable functions
 for function in ~/.zsh/functions/*.zsh; do
-  source $function
+  source "$function"
 done
 
 # makes color constants available
