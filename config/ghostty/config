@@ -1,5 +1,13 @@
 theme = light:Monokai Pro Light Sun,dark:Dimmed Monokai
 
+# Indexed ANSI only — helps older apps; does not # affect 24-bit RGB from TUIs.
+# palette = 7=#5c5c5c
+# palette = 8=#6b6b6b
+# palette = 15=#3d3d3d
+
+# Claude Code default themes use 24-bit RGB; those ignore palette= above. Prefer fixing colors in
+# Claude Code: run `/theme` and choose an ANSI (or “light”) variant so output uses the terminal palette.
+
 font-family = MesloLGS Nerd Font
 font-size = 18
 cursor-style = bar
