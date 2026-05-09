@@ -65,7 +65,12 @@ info "Installing global pnpm packages..."
 if command_does_not_exist pnpm; then
   green "pnpm not found, skipping global packages"
 else
-  xargs pnpm add -g < pnpm-globals.txt
+  export PNPM_HOME="$HOME/Library/pnpm"
+  export PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
+  pnpm_global_packages="$(grep -vE '^[[:space:]]*(#|$)' pnpm-globals.txt)"
+  if [ -n "$pnpm_global_packages" ]; then
+    echo "$pnpm_global_packages" | xargs pnpm add -g
+  fi
 fi
 
 stay_awake_while ./tag-macos/system/osx-settings.sh

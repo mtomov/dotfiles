@@ -1,2 +1,4 @@
+# One package spec per line. Blank lines and comments are ignored by setup/osx/install.sh.
+@primeradianthq/streamlinear
 claude-ext
 diffity
