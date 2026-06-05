@@ -1,7 +1,12 @@
 [settings]
+legacy_version_file = true
 
 [settings.ruby]
 compile = false
 
 [tools]
+fnox = "latest"
+node = "26.1.0"
+pitchfork = "latest"
+pkl = "latest"
 # ruby managed per-project via .ruby-version

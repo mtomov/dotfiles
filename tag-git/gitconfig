@@ -3,7 +3,7 @@
 
 [pull]
   default = current
-	rebase = false
+	rebase = true
 [push]
   default = current
 [core]
@@ -100,3 +100,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[maintenance]
+	repo = /Users/martin/beam/magicnotes
+[url "https://github.com/"]
+	insteadOf = git@github.com:

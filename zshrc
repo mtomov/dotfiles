@@ -145,12 +145,124 @@ export PATH=".git/safe/../../bin:$PATH"
 #export OAUTH_DEBUG=true
 [ -f "$HOME/bin/kubectl" ] && source <(kubectl completion zsh)
 
+if command -v zmx &> /dev/null; then
+  eval "$(zmx completions zsh)"
+fi
+
+zmx-select() {
+  if ! command -v zmx &> /dev/null || ! command -v fzf &> /dev/null; then
+    return 127
+  fi
+
+  local display
+  display=$(zmx list 2>/dev/null | while IFS=$'\t' read -r name pid clients created dir; do
+    name=${name#→ }
+    name=${name#  }
+    name=${name#session_name=}
+    name=${name#name=}
+    pid=${pid#pid=}
+    clients=${clients#clients=}
+    dir=${dir#started_in=}
+    dir=${dir#start_dir=}
+    printf "%-20s  pid:%-8s  clients:%-2s  %s\n" "$name" "$pid" "$clients" "$dir"
+  done)
+
+  local output query key selected session_name
+  output=$({ [[ -n "$display" ]] && echo "$display"; } | fzf \
+    --print-query \
+    --expect=ctrl-n \
+    --height=80% \
+    --reverse \
+    --prompt="zmx> " \
+    --header="Enter: select | Ctrl-N: create new" \
+    --preview='zmx history {1}' \
+    --preview-window=right:60%:follow \
+  )
+  local rc=$?
+  query=$(echo "$output" | sed -n '1p')
+  key=$(echo "$output" | sed -n '2p')
+  selected=$(echo "$output" | sed -n '3p')
+
+  if [[ "$key" == "ctrl-n" && -n "$query" ]]; then
+    session_name="$query"
+  elif [[ $rc -eq 0 && -n "$selected" ]]; then
+    session_name=$(echo "$selected" | awk '{print $1}')
+  elif [[ -n "$query" ]]; then
+    session_name="$query"
+  else
+    return 130
+  fi
+
+  zmx attach "$session_name"
+}
+alias zs=zmx-select
+
+mnz-session-name() {
+  local worktree_path="$1"
+  local name
+
+  if [[ "$worktree_path" == "$HOME/beam/magicnotes" ]]; then
+    name="main"
+  else
+    name="${worktree_path:t}"
+  fi
+
+  printf 'mn:%s\n' "$name"
+}
+
+mnz-current-worktree() {
+  local root common_dir
+
+  root=$(git rev-parse --show-toplevel 2>/dev/null) || return 1
+  common_dir=$(git rev-parse --git-common-dir 2>/dev/null) || return 1
+  common_dir="${common_dir:A}"
+
+  [[ "$common_dir" == "$HOME/beam/magicnotes/.git" ]] || return 1
+  printf '%s\n' "$root"
+}
+
+mnz-pick-worktree() {
+  command -v fzf &> /dev/null || return 127
+
+  git -C "$HOME/beam/magicnotes" worktree list --porcelain | awk '
+    /^worktree / { path = substr($0, 10) }
+    /^branch / {
+      branch = $2
+      sub(/^refs\/heads\//, "", branch)
+      printf "%-72s  %s\n", path, branch
+    }
+  ' | fzf \
+    --height=80% \
+    --reverse \
+    --prompt="mnz> " \
+    --header="Enter: attach/create zmx for worktree" \
+    --preview='git -C {1} status --short --branch' \
+    --preview-window=right:50%
+}
+
+mnz() {
+  command -v zmx &> /dev/null || return 127
+
+  local worktree_path selected session_name
+  worktree_path=$(mnz-current-worktree 2>/dev/null)
+
+  if [[ -z "$worktree_path" ]]; then
+    selected=$(mnz-pick-worktree) || return $?
+    worktree_path=$(echo "$selected" | awk '{print $1}')
+  fi
+
+  [[ -n "$worktree_path" ]] || return 130
+  session_name=$(mnz-session-name "$worktree_path")
+
+  cd "$worktree_path" && zmx attach "$session_name"
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # export PATH=/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
 # export PATH=/Users/martin/Library/Python/3.10/bin:$PATH
 # export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
@@ -194,4 +306,10 @@ esac
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Ensure mise shims win over system /usr/bin (macOS path_helper reorders PATH)
+export PATH="${HOME}/.local/share/mise/shims:${PATH}"
+
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# sentry
+fpath=("/Users/martin/.local/share/zsh/site-functions" $fpath)

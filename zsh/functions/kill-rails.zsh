@@ -4,6 +4,7 @@ kill-rails() {
   kill-port 28080 # wss
   kill-port 3036 # websocket
   kill-port 6006 # Storybook
-  kill-port 11434 # Ollama
+  kill-port 8765 # LaunchDarkly
+  # kill-port 11434 # Ollama
   echo "Done."
 }

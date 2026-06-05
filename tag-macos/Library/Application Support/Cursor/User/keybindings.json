@@ -604,10 +604,6 @@
     "command": "-workbench.action.navigateToLastEditLocation"
   },
   {
-    "key": "shift+alt+c",
-    "command": "gitlens.copyRemoteFileUrlToClipboard"
-  },
-  {
     "key": "cmd+y",
     "command": "redo"
   },
@@ -742,5 +738,9 @@
     "key": "alt+cmd+s",
     "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
     "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
+  },
+  {
+    "key": "shift+alt+c",
+    "command": "issue.copyGithubHeadLink"
   }
 ]

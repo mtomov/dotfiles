@@ -5,6 +5,7 @@
 add_newline = false
 
 format = """
+${custom.zmx_session}\
 $time\
 $ruby\
 $nodejs\
@@ -19,6 +20,23 @@ disabled = true
 format = "[$time]($style) "
 style = "#888888"
 use_12hr = true
+
+[custom.zmx_session]
+command = """
+case "$ZMX_SESSION" in
+  supa-????????-????-????-????-????????????)
+    printf 'supa:%s' "$(printf '%s' "$ZMX_SESSION" | cut -d- -f2)"
+    ;;
+  *)
+    printf '%s' "$ZMX_SESSION"
+    ;;
+esac
+"""
+when = "test -n \"$ZMX_SESSION\""
+symbol = " "
+format = "[$symbol$output]($style) "
+description = "zmx session name"
+style = "bold magenta"
 
 [ruby]
 disabled = true
@@ -37,6 +55,8 @@ truncate_to_repo = false
 [git_branch]
 format = "[($branch )]($style)"
 style = "fg:031" # dark blue
+truncation_length = 25
+truncation_symbol = "…"
 
 [git_state]
 cherry_pick = "[🍒 PICKING](bold fg:197)" # red

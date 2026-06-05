@@ -35,7 +35,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.lineNumbers": "on",
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.minimap.scale": 2,
   "editor.mouseWheelZoom": true,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -352,7 +352,7 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "workbench.colorTheme": "Default Light Modern",
+  "workbench.colorTheme": "Default Dark Modern",
   "git-worktree-manager.worktreeCopyPatterns": [
     ".env",
     ".vscode/**",
@@ -371,6 +371,8 @@
   "claudeCode.environmentVariables": [],
   "claudeCode.preferredLocation": "panel",
   "cursor.composer.queueMessageDefaultBehavior": "send",
-  "gitlens.gitkraken.mcp.autoEnabled": false
+  "gitlens.gitkraken.mcp.autoEnabled": false,
+  "window.autoDetectColorScheme": false,
+  "git.blame.statusBarItem.enabled": true
   // "tailwindCSS.experimental.configFile": "beamai/config/tailwind.config.js"
 }

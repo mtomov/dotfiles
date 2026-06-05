@@ -25,6 +25,13 @@ defaults -currentHost write -globalDomain AppleFontSmoothing -int 0
 # Disable the sound effects on boot
 sudo -n nvram SystemAudioVolume=" " 2>/dev/null || true
 
+# Disable alert and UI sound effects (beep, Trash, screenshot, volume feedback, etc.)
+osascript -e 'set volume alert volume 0' 2>/dev/null || true
+defaults write -g com.apple.sound.beep.volume -float 0
+defaults write -g com.apple.sound.beep.feedback -bool false
+defaults write -g com.apple.sound.uiaudio.enabled -bool false
+defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -int 0
+
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
@@ -89,12 +96,24 @@ defaults -currentHost write .GlobalPreferences com.apple.mouse.swapLeftRightButt
 # Reduce wallpaper tinting in windows
 defaults write -g AppleReduceDesktopTinting -bool true
 
+# Disable window open/close animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Disable Quick Look panel animation
+defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
+
+# Disable fullscreen transition animation
+defaults write NSGlobalDomain NSToolbarFullScreenAnimationDuration -float 0
+
 ###############################################################################
 # Screenshots                                                                  #
 ###############################################################################
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
+
+# Disable screenshot shutter sound
+defaults write com.apple.screencapture disable-sound -bool true
 
 # Save screenshots to ~/Pictures/screenshots
 defaults write com.apple.screencapture location ~/Pictures/screenshots
@@ -118,6 +137,13 @@ defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 31 "
 # Save picture of selected area as a file (⌘⇧4)
 defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 30 "{ enabled = 1; value = { parameters = (52, 21, 1179648); type = 'standard'; }; }"
 
+# Disable window tiling shortcuts (using Rectangle instead)
+# Note: these are hardcoded in Sequoia's Window Manager and NOT controlled by symbolichotkeys,
+# so we override them via NSUserKeyEquivalents to shadow the menu items instead.
+for item in "Left" "Right" "Top" "Bottom" "Top Left" "Top Right" "Bottom Left" "Bottom Right" "Left & Right" "Right & Left" "Top & Bottom" "Bottom & Top" "Return to Previous Size"; do
+  defaults write -g NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033${item}" "@\U0000"
+done
+
 ###############################################################################
 # Dock                                                                         #
 ###############################################################################
@@ -136,6 +162,12 @@ defaults write com.apple.dock autohide-delay -int 0
 
 # Use a small animation time for the Dock to appear
 defaults write com.apple.dock autohide-time-modifier -float 0.4
+
+# Disable app launch bounce animation
+defaults write com.apple.dock launchanim -bool false
+
+# Use scale effect instead of genie when minimizing
+defaults write com.apple.dock mineffect -string "scale"
 
 ###############################################################################
 # Finder                                                                       #
