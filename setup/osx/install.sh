@@ -58,6 +58,16 @@ info "Linking dotfiles into ~..."
 export RCRC=tag-macos/rcrc
 rcup -f
 
+rectangle_config_dir="$HOME/Library/Application Support/Rectangle"
+rectangle_config_file="$rectangle_config_dir/RectangleConfig.json"
+rectangle_config_source="$PWD/tag-macos/Library/Application Support/Rectangle/RectangleConfig.json"
+mkdir -p "$rectangle_config_dir"
+if [ -L "$rectangle_config_file" ] || [ ! -e "$rectangle_config_file" ]; then
+  rm -f "$rectangle_config_file"
+  install -m 600 "$rectangle_config_source" "$rectangle_config_file"
+fi
+chmod 600 "$rectangle_config_file"
+
 info "Creating ~/Pictures/screenshots so screenshots can be saved there..."
 mkdir -p ~/Pictures/screenshots
 

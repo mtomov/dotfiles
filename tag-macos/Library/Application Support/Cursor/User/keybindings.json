@@ -742,5 +742,15 @@
   {
     "key": "shift+alt+c",
     "command": "issue.copyGithubHeadLink"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "workbench.action.toggleAgentsFromKeyboard",
+    "when": "!isAuxiliaryWindowFocusedContext && !isGlass"
+  },
+  {
+    "key": "alt+cmd+j",
+    "command": "-workbench.action.toggleAgentsFromKeyboard",
+    "when": "!isAuxiliaryWindowFocusedContext && !isGlass"
   }
 ]

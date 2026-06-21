@@ -199,7 +199,6 @@
   "vsicons.dontShowNewVersionMessage": true,
   "workbench.editor.labelFormat": "short",
   "workbench.editor.limit.enabled": true,
-  "workbench.iconTheme": "vscode-icons",
   "workbench.sideBar.location": "right",
   "yaml.format.enable": false,
   "gitlens.statusBar.enabled": false,
@@ -373,6 +372,8 @@
   "cursor.composer.queueMessageDefaultBehavior": "send",
   "gitlens.gitkraken.mcp.autoEnabled": false,
   "window.autoDetectColorScheme": false,
-  "git.blame.statusBarItem.enabled": true
+  "git.blame.statusBarItem.enabled": true,
+  "extensions.autoUpdate": false,
+  "git.blame.editorDecoration.enabled": true
   // "tailwindCSS.experimental.configFile": "beamai/config/tailwind.config.js"
 }

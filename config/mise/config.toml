@@ -9,4 +9,5 @@ fnox = "latest"
 node = "26.1.0"
 pitchfork = "latest"
 pkl = "latest"
+ruby = "4.0.2"
 # ruby managed per-project via .ruby-version
